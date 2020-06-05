@@ -29,9 +29,9 @@
 <body>
     <!-- This is new -->
     <div class="btn-group">
-        <button type="button" id="allbus" class="btn btn-success">All</button>
-        <button type="button" id="containedWildfires" class="btn btn-primary">Others</button>
-        <button type="button" id="activeWildfires" class="btn btn-danger">Cafes</button>
+        <button type="button" id="allbus" class="btn btn-success">All wildfires</button>
+        <button type="button" id="containedWildfires" class="btn btn-primary">Active wildfires</button>
+        <button type="button" id="activeWildfires" class="btn btn-danger">Contained wildfires</button>
     </div>
     <div id="map"></div>
     <script type="text/javascript">
@@ -45,10 +45,37 @@
         markerColor: 'red', // see colors above
         icon: 'coffee' //http://fortawesome.github.io/Font-Awesome/icons/
     });
+
+    var smallFireIcon = L.icon({
+        iconUrl: 'small-fire.png',
+        iconSize: [35, 35]
+    });
+    var mediumFireIcon = L.icon({
+        iconUrl: 'medium-fire.png',
+        iconSize: [35, 35]
+    });
+    var largeFireIcon = L.icon({
+        iconUrl: 'large-fire.png',
+        iconSize: [35, 35]
+    });
+    var containedSmallFireIcon = L.icon({
+        iconUrl: 'small-fire.png',
+        iconSize: [25, 25]
+    });
+    var containedMediumFireIcon = L.icon({
+        iconUrl: 'medium-fire.png',
+        iconSize: [25, 25]
+    });
+    var containedLargeFireIcon = L.icon({
+        iconUrl: 'large-fire.png',
+        iconSize: [25, 25]
+    });
+
     var map = L.map('map')
         .addLayer(mapboxTiles)
         .setView([39.113, -105.359], 4);
-    var promise = $.getJSON("wildfire_filter.json");
+    //var promise = $.getJSON("wildfire_filter.json");
+    var promise = $.getJSON("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/Active_Fires/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson");
     promise.then(function(data) {
         var allWildfires = L.geoJson(data);
         var activeWildfires = L.geoJson(data, {
@@ -56,10 +83,18 @@
                 return feature.properties.PercentContained != 100 && feature.properties.DailyAcres > 100 && feature.properties.IncidentTypeCategory == 'WF';
             },
             pointToLayer: function(feature, latlng) {
+                var popupInfo = feature.properties.IncidentName + '<br>Pct. contained: ' + feature.properties.PercentContained + '<br>Acres: ' + feature.properties.DailyAcres + '<br>Fire type: ' + feature.properties.IncidentTypeCategory;
+                var fireIcon;
+                if (feature.properties.DailyAcres < 1000) {
+                    fireIcon = smallFireIcon
+                } else if (feature.properties.DailyAcres < 10000) {
+                    fireIcon = mediumFireIcon
+                } else fireIcon = largeFireIcon;
+                
                 return L.marker(latlng, {
-                    icon: cafeIcon
+                    icon: fireIcon
                 }).on('mouseover', function() {
-                    this.bindPopup(feature.properties.IncidentName + '<br>Pct. contained: ' + feature.properties.PercentContained + '<br>Acres: ' + feature.properties.DailyAcres + '<br>Fire type: ' + feature.properties.IncidentTypeCategory).openPopup();
+                    this.bindPopup(popupInfo).openPopup();
                 });
             }
         });
