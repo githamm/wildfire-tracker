@@ -303,7 +303,7 @@
                 console.log(feature);
                 var acres = Math.round(feature.properties.GISAcres);
                 var popup = '<h3 class="fire-name">' + feature.properties.IncidentName + '</h3><br>' + 'Acres: ' + acres.toLocaleString();
-                 var marker;
+                var marker;
                 // var perimeterDate = moment(feature.properties.DateCurrent).format('LLL');
                 // layer.bindPopup('<h3 class="fire-name">' + feature.properties.IncidentName + '</h3><br>' + 'Acres: ' + Math.round(feature.properties.GISAcres).toLocaleString() + '<br>' + '<span class="update">Updated ' + perimeterDate + '</span>');
                 if (feature.geometry.type === 'MultiPolygon') {
@@ -314,18 +314,18 @@
                     //L.marker([lat, lon],{ icon: smallFireIcon }).addTo(map);
                     //L.marker([lat, lon]).addTo(map);
                     if (acres < 1000) {
-                        L.marker([lat, lon],{ icon: smallFireIcon }).bindPopup(popup).addTo(map)
+                        L.marker([lat, lon], { icon: smallFireIcon }).bindPopup(popup).addTo(map)
                     } else if (acres < 10000) {
                         L.marker([lat, lon], { icon: mediumFireIcon }).bindPopup(popup).addTo(map)
                     } else(L.marker([lat, lon], { icon: largeFireIcon }).bindPopup(popup).addTo(map));
                     // L.marker.bindPopup('<h3 class="fire-name">' + feature.properties.IncidentName + '</h3><br>' + 'Acres: ' + acres.toLocaleString() + '<br>' + 'Contained: ' + feature.properties.percentcontained + '%' + '<br>' + 'Started: ' + discoveryDate + '<br>' + 'Cause: ' + feature.properties.firecause + '<br>' + popupFooter);
-                     //return marker;
+                    //return marker;
                 }
             }
         }).addTo(activeWildfiresUS2018);
     });
 
-        // CONTAINED U.S. WILDFIRES IN 2018
+    // CONTAINED U.S. WILDFIRES IN 2018
     //     L.geoJson(data, {
     //         pointToLayer: function(feature, latlng) {
     //             var discoveryDate = moment(feature.properties.firediscoverydatetime).format('LL');
@@ -381,13 +381,13 @@
                 console.log(feature);
                 var perimeterDate = moment(feature.properties.DateCurrent).format('LLL');
                 layer.bindPopup('<h3 class="fire-name">' + feature.properties.IncidentName + '</h3><br>' + 'Acres: ' + Math.round(feature.properties.GISAcres).toLocaleString() + '<br>' + '<span class="update">Updated ' + perimeterDate + '</span>');
-            //     if (feature.geometry.type === 'MultiPolygon') {
-            //         console.log('Polygon detected');
-            //         var centroid = turf.centroid(feature);
-            //         var lon = centroid.geometry.coordinates[0];
-            //         var lat = centroid.geometry.coordinates[1];
-            //         L.marker([lat, lon]).addTo(map);
-            //     }
+                //     if (feature.geometry.type === 'MultiPolygon') {
+                //         console.log('Polygon detected');
+                //         var centroid = turf.centroid(feature);
+                //         var lon = centroid.geometry.coordinates[0];
+                //         var lat = centroid.geometry.coordinates[1];
+                //         L.marker([lat, lon]).addTo(map);
+                //     }
             }
         }).addTo(perimeters2018);
     });

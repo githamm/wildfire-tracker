@@ -3,22 +3,115 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <!--this is new-->
-    <script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7.3/leaflet.js"></script>
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <style type="text/css">
+    <meta name="robots" content="noindex,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United States Wildfire Map | The Denver Post</title>
+    <link rel="shortcut icon" href="//extras.mnginteractive.com/live/media/favIcon/dpo/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css" />
+    <link rel="stylesheet" href="//unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.14/c3.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:700|Roboto+Mono" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+    <script src="//extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
+    <script src="//unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+    <script src="//extras.denverpost.com/app/homicide-report/js/leaflet-grouped-layer-control.js"></script>
+    <style>
+        body {
+        height: 100%;
+        margin: 0;
+        padding: 5px;
+        font-family: 'Roboto', sans-serif;
+    }
+
     #map {
         width: 100%;
         height: 600px;
+        border: 1px solid silver;
     }
 
-    /* This is new */
+    .leaflet-popup-content-wrapper {
+        border-radius: 0;
+    }
+
+    .leaflet-popup-content-wrapper,
+    .leaflet-popup-tip {
+        background: #fafafa;
+    }
+
+    .leaflet-popup-content {
+        font-size: .9rem;
+    }
+
+    .fire-name {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 1.2rem;
+        color: #c03639;
+        border-bottom: 1px solid #c3c3c3;
+        margin-top: 0;
+        margin-bottom: -13px;
+    }
+
+    .update {
+        font-size: .8rem;
+        color: #9b9b9b;
+        font-style: italic;
+    }
+
+    .credit {
+        font-size: .8rem;
+        color: #9b9b9b;
+        font-style: italic;
+        text-align: right;
+        margin-top: 5px;
+    }
+
+    ul>li {
+        display: inline-block;
+        zoom: 1;
+        *display: inline;
+    }
+
+    .legend-types {
+        display: inline-block;
+        zoom: 1;
+        *display: inline;
+    }
+
+    .legend-marker-text {
+        margin-top: -32px;
+        margin-left: 35px;
+        margin-right: 10px;
+    }
+
+    .legend-perimeter-text {
+        margin-top: -17px;
+        margin-left: 23px;
+        margin-right: 10px;
+    }
+
+    .legend-title {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        margin-left: -20px;
+        margin-bottom: -13px;
+    }
+
+    #legend-active,
+    #legend-inactive {
+        height: 17px;
+        width: 17px;
+        border-radius: 50%;
+    }
+
+    #legend-active {
+        background: #c03639;
+    }
+
+    #legend-inactive {
+        background: #000;
+    }
 
     button {
         width: 100px;
@@ -27,24 +120,52 @@
 </head>
 
 <body>
-    <!-- This is new -->
-    <div class="btn-group">
-        <button type="button" id="allbus" class="btn btn-success">All wildfires</button>
-        <button type="button" id="containedWildfires" class="btn btn-primary">Active wildfires</button>
-        <button type="button" id="activeWildfires" class="btn btn-danger">Contained wildfires</button>
+    <div class="legend-types">
+        <ul>
+            <p class="legend-title">Markers</p>
+            <br>
+            <li><img src="small-fire.png">
+                <p class="legend-marker-text">
+                    < 1,000 acres</p> </li> <li><img src="medium-fire.png">
+                        <p class="legend-marker-text">1,000-10,000 acres</p>
+            </li>
+            <li><img src="large-fire.png">
+                <p class="legend-marker-text">10,000+ acres</p>
+            </li>
+        </ul>
     </div>
+    <!-- <div class="legend-types">
+        <ul style="margin-top: -20px">
+            <p class="legend-title">Perimeters</p>
+            <br>
+            <li>
+                <div id="legend-active"></div>
+                <p class="legend-perimeter-text">Active fire</p>
+            </li>
+            <li>
+                <div id="legend-inactive"></div>
+                <p class="legend-perimeter-text">Inactive fire</p>
+            </li>
+        </ul>
+    </div> -->
+    <ul class="button-group">
+        <li class="button" id="activeWildfires">Active wildfires</li>
+        <li class="button" id="containedWildfires">Contained wildfires</li>
+        <li class="button" id="allWildfires">All wildfires</li>
+    </ul>
     <div id="map"></div>
     <script type="text/javascript">
     /* From http://bl.ocks.org/zross/47760925fcb1643b4225 */
-    var mapboxTiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-        attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
+    var Stadia_OSMBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
+        maxZoom: 20,
+        attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
     });
     //possible colors 'red', 'darkred', 'orange', 'green', 'darkgreen', 'blue', 'purple', 'darkpuple', 'cadetblue'
-    var cafeIcon = L.AwesomeMarkers.icon({
-        prefix: 'fa', //font awesome rather than bootstrap
-        markerColor: 'red', // see colors above
-        icon: 'coffee' //http://fortawesome.github.io/Font-Awesome/icons/
-    });
+    // var cafeIcon = L.AwesomeMarkers.icon({
+    //     prefix: 'fa', //font awesome rather than bootstrap
+    //     markerColor: 'red', // see colors above
+    //     icon: 'coffee' //http://fortawesome.github.io/Font-Awesome/icons/
+    // });
 
     var smallFireIcon = L.icon({
         iconUrl: 'small-fire.png',
@@ -72,10 +193,12 @@
     });
 
     var map = L.map('map')
-        .addLayer(mapboxTiles)
+        .addLayer(Stadia_OSMBright)
         .setView([39.113, -105.359], 4);
+
     //var promise = $.getJSON("wildfire_filter.json");
     var promise = $.getJSON("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/Active_Fires/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson");
+
     promise.then(function(data) {
         var allWildfires = L.geoJson(data);
         var activeWildfires = L.geoJson(data, {
@@ -83,46 +206,62 @@
                 return feature.properties.PercentContained != 100 && feature.properties.DailyAcres > 100 && feature.properties.IncidentTypeCategory == 'WF';
             },
             pointToLayer: function(feature, latlng) {
-                var popupInfo = feature.properties.IncidentName + '<br>Pct. contained: ' + feature.properties.PercentContained + '<br>Acres: ' + feature.properties.DailyAcres + '<br>Fire type: ' + feature.properties.IncidentTypeCategory;
+                var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '</h3>Pct. contained: ' + feature.properties.PercentContained + '<br>Acres: ' + feature.properties.DailyAcres + '<br>Fire type: ' + feature.properties.IncidentTypeCategory;
                 var fireIcon;
+
                 if (feature.properties.DailyAcres < 1000) {
                     fireIcon = smallFireIcon
                 } else if (feature.properties.DailyAcres < 10000) {
                     fireIcon = mediumFireIcon
                 } else fireIcon = largeFireIcon;
-                
+
                 return L.marker(latlng, {
                     icon: fireIcon
-                }).on('mouseover', function() {
+                }).on('click', function() {
                     this.bindPopup(popupInfo).openPopup();
                 });
             }
         });
+
         var containedWildfires = L.geoJson(data, {
             filter: function(feature, layer) {
                 return feature.properties.PercentContained == 100;
             },
             pointToLayer: function(feature, latlng) {
-                return L.marker(latlng, {}).on('mouseover', function() {
-                    this.bindPopup(feature.properties.IncidentName + '<br>Pct. contained: ' + feature.properties.PercentContained + '<br>Acres: ' + feature.properties.DailyAcres + '<br>Fire type: ' + feature.properties.IncidentTypeCategory).openPopup();
+                var popupInfo = feature.properties.IncidentName + '<br>Pct. contained: ' + feature.properties.PercentContained + '<br>Acres: ' + feature.properties.DailyAcres + '<br>Fire type: ' + feature.properties.IncidentTypeCategory;
+                var fireIcon;
+
+                if (feature.properties.DailyAcres < 1000) {
+                    fireIcon = containedSmallFireIcon
+                } else if (feature.properties.DailyAcres < 10000) {
+                    fireIcon = containedMediumFireIcon
+                } else fireIcon = containedLargeFireIcon;
+
+                return L.marker(latlng, {
+                    icon: fireIcon
+                }).on('click', function() {
+                    this.bindPopup(popupInfo).openPopup();
                 });
             }
         });
-        map.fitBounds(allWildfires.getBounds(), {
-            padding: [50, 50]
-        });
+        // map.fitBounds(allWildfires.getBounds(), {
+        //     padding: [50, 50]
+        // });
+
         activeWildfires.addTo(map)
-        containedWildfires.addTo(map)
-        // The JavaScript below is new
-        $("#containedWildfires").click(function() {
-            map.addLayer(containedWildfires)
-            map.removeLayer(activeWildfires)
-        });
+        //containedWildfires.addTo(map)
+
         $("#activeWildfires").click(function() {
             map.addLayer(activeWildfires)
             map.removeLayer(containedWildfires)
         });
-        $("#allbus").click(function() {
+
+        $("#containedWildfires").click(function() {
+            map.addLayer(containedWildfires)
+            map.removeLayer(activeWildfires)
+        });
+
+        $("#allWildfires").click(function() {
             map.addLayer(activeWildfires)
             map.addLayer(containedWildfires)
         });
