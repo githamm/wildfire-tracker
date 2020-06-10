@@ -15,7 +15,7 @@
     <script src="//cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
     <script src="//extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
     <script src="//unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
-    <script src="//extras.denverpost.com/app/homicide-report/js/leaflet-grouped-layer-control.js"></script>
+    <script src="moment.js"></script>
     <style>
         body {
         height: 100%;
@@ -32,6 +32,7 @@
 
     .leaflet-popup-content-wrapper {
         border-radius: 0;
+        max-width: 260px;
     }
 
     .leaflet-popup-content-wrapper,
@@ -47,15 +48,19 @@
         font-family: 'Roboto Condensed', sans-serif;
         font-size: 1.2rem;
         color: #c03639;
+        text-transform: uppercase;
         border-bottom: 1px solid #c3c3c3;
-        margin-top: 0;
-        margin-bottom: -13px;
+        margin: 0 0 8px 0;
     }
 
     .update {
+        display: block;
+        font-family: 'Roboto',sans-serif;
         font-size: .8rem;
         color: #9b9b9b;
         font-style: italic;
+        text-transform: none;
+        margin: 0 0 5px 0;
     }
 
     .credit {
@@ -120,6 +125,7 @@
 </head>
 
 <body>
+    <p><a href="https://www.nwcg.gov/sites/default/files/publications/pms210_rca.pdf" target="_blank">Incident type 1-5</a> &mdash; 1 being a large, complex wildfire affecting people and critical infrastructure, 5 being a small wildfire with few personnel involved or a wildfire that is mostly contained</em></p>
     <div class="legend-types">
         <ul>
             <p class="legend-title">Markers</p>
@@ -156,10 +162,13 @@
     <div id="map"></div>
     <script type="text/javascript">
     /* From http://bl.ocks.org/zross/47760925fcb1643b4225 */
-    var Stadia_OSMBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
-        maxZoom: 20,
-        attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    var mapTiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
     });
+
+    // var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    //     attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    // });
     //possible colors 'red', 'darkred', 'orange', 'green', 'darkgreen', 'blue', 'purple', 'darkpuple', 'cadetblue'
     // var cafeIcon = L.AwesomeMarkers.icon({
     //     prefix: 'fa', //font awesome rather than bootstrap
@@ -169,32 +178,52 @@
 
     var smallFireIcon = L.icon({
         iconUrl: 'small-fire.png',
-        iconSize: [35, 35]
+        iconSize: [35, 35],
+        iconAnchor: [20, 32],
+        popupAnchor: [-3, -20]
     });
     var mediumFireIcon = L.icon({
         iconUrl: 'medium-fire.png',
-        iconSize: [35, 35]
+        iconSize: [35, 35],
+        iconAnchor:   [20, 32],
+        popupAnchor: [-3, -20]
     });
     var largeFireIcon = L.icon({
         iconUrl: 'large-fire.png',
-        iconSize: [35, 35]
+        iconSize: [35, 35],
+        iconAnchor:   [20, 32],
+        popupAnchor: [-3, -20]
     });
     var containedSmallFireIcon = L.icon({
         iconUrl: 'small-fire.png',
-        iconSize: [25, 25]
+        iconSize: [25, 25],
+        iconAnchor:   [20, 32],
+        popupAnchor: [-3, -20]
     });
     var containedMediumFireIcon = L.icon({
         iconUrl: 'medium-fire.png',
-        iconSize: [25, 25]
+        iconSize: [25, 25],
+        iconAnchor:   [20, 32],
+        popupAnchor: [-3, -20]
     });
     var containedLargeFireIcon = L.icon({
         iconUrl: 'large-fire.png',
-        iconSize: [25, 25]
+        iconSize: [25, 25],
+        iconAnchor:   [20, 32],
+        popupAnchor: [-3, -20]
     });
 
-    var map = L.map('map')
-        .addLayer(Stadia_OSMBright)
-        .setView([39.113, -105.359], 4);
+    var map = L.map('map', {
+        center: [37.0119, -105.4842],
+        zoom: 6,
+        minZoom: 3,
+        //dragging: false,
+        layers: [mapTiles]
+    });
+
+    // var map = L.map('map')
+    //     .addLayer(mapTiles)
+    //     .setView([39.113, -105.359], 6);
 
     //var promise = $.getJSON("wildfire_filter.json");
     var promise = $.getJSON("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/Active_Fires/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson");
@@ -206,8 +235,43 @@
                 return feature.properties.PercentContained != 100 && feature.properties.DailyAcres > 100 && feature.properties.IncidentTypeCategory == 'WF';
             },
             pointToLayer: function(feature, latlng) {
-                var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '</h3>Pct. contained: ' + feature.properties.PercentContained + '<br>Acres: ' + feature.properties.DailyAcres + '<br>Fire type: ' + feature.properties.IncidentTypeCategory;
+                //     if (feature.properties.PercentContained > 0) {
+                //     console.log(feature)
+                // };
+                var acres = feature.properties.DailyAcres.toLocaleString();
+                var percentContained;
+
+                if (feature.properties.PercentContained != null) {
+                    percentContained = feature.properties.PercentContained + '%'
+                } else percentContained = 'Unavailable';
+
+                var personnel;
+                if (feature.properties.TotalIncidentPersonnel != null) {
+                    personnel = feature.properties.TotalIncidentPersonnel
+                } else personnel = 'Unavailable';
+
+                var city;
+                var landowner;
+
+                if (feature.properties.POOCity != null) {
+                    city = 'near ' + feature.properties.POOCity
+                } else city = '';
+
+                // This makes non-agency names lowercase
+                String.prototype.lowercase = function() {
+                    return this.charAt(0).toLowerCase() + this.slice(1);
+                };
+
+                if (feature.properties.POOLandownerCategory != null) {
+                    if (feature.properties.POOLandownerCategory == 'Private' || feature.properties.POOLandownerCategory == 'County' || feature.properties.POOLandownerCategory == 'State' || feature.properties.POOLandownerCategory == 'Tribal') {
+                        landowner = 'on ' + feature.properties.POOLandownerCategory.lowercase() + ' land '
+                    } else landowner = 'on ' + feature.properties.POOLandownerCategory + ' land '
+                } else landowner = '';
+
                 var fireIcon;
+                var discoveryDate = moment(feature.properties.FireDiscoveryDateTime).format('LL');
+                var modifiedDate = moment(feature.properties.ModifiedOnDateTime).format('LLL');
+                var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '<br><span class="update">Updated ' + modifiedDate + '</span></h3>Acres: <strong>' + acres + '</strong><br>Containment: <strong>' + percentContained + '</strong><br>Cause: <strong>' + feature.properties.FireCause + '</strong><br>Discovered: <strong>' + discoveryDate + '</strong><br>Personnel assigned: <strong>' + personnel + '</strong><br>Fire complexity*: <strong>' + feature.properties.FireMgmtComplexity + '</strong><br><br>The fire is burning ' + landowner + city + ' in ' + feature.properties.POOCounty + ' County.<br><br><a href="https://www.google.com/maps?q=loc:' + feature.geometry.coordinates[1] + ',+' + feature.geometry.coordinates[0] + '&t=h" target="blank">Open in Google maps</a>';
 
                 if (feature.properties.DailyAcres < 1000) {
                     fireIcon = smallFireIcon
@@ -215,9 +279,41 @@
                     fireIcon = mediumFireIcon
                 } else fireIcon = largeFireIcon;
 
+                //return L.Marker(latlng, fireIcon).bindPopup(popupInfo);
+
+                // return L.marker(latlng, {
+                //     icon: fireIcon
+                // }).on('mouseover', function() {
+                //     this.bindPopup(popupInfo).openPopup();
+                // });
+
                 return L.marker(latlng, {
                     icon: fireIcon
-                }).on('click', function() {
+                }).bindPopup(popupInfo).openPopup();
+            }
+        });
+
+        var smallWildfires = L.geoJson(data, {
+            filter: function(feature, layer) {
+                return feature.properties.PercentContained != 100 && feature.properties.DailyAcres <= 100 && feature.properties.IncidentTypeCategory == 'WF';
+            },
+            pointToLayer: function(feature, latlng) {
+                var fireIcon;
+                var discoveryDate = moment(feature.properties.FireDiscoveryDateTime).format('LLL');
+                var controlDate = moment(feature.properties.ControlDateTime).format('LLL');
+                var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '</h3>Pct. contained: ' + feature.properties.PercentContained + '<br>Acres: ' + feature.properties.DailyAcres + '<br>Fire type: ' + feature.properties.IncidentTypeCategory + '<br>Discovery date: ' + discoveryDate + '<br>Control date: ' + controlDate;
+
+                if (feature.properties.DailyAcres < 1000) {
+                    fireIcon = smallFireIcon
+                } else if (feature.properties.DailyAcres < 10000) {
+                    fireIcon = mediumFireIcon
+                } else fireIcon = largeFireIcon;
+
+                //return L.Marker(latlng, fireIcon).bindPopup(popupInfo);
+
+                return L.marker(latlng, {
+                    icon: fireIcon
+                }).on('mouseover', function() {
                     this.bindPopup(popupInfo).openPopup();
                 });
             }
@@ -228,8 +324,10 @@
                 return feature.properties.PercentContained == 100;
             },
             pointToLayer: function(feature, latlng) {
-                var popupInfo = feature.properties.IncidentName + '<br>Pct. contained: ' + feature.properties.PercentContained + '<br>Acres: ' + feature.properties.DailyAcres + '<br>Fire type: ' + feature.properties.IncidentTypeCategory;
                 var fireIcon;
+                var discoveryDate = moment(feature.properties.FireDiscoveryDateTime).format('LLL');
+                var controlDate = moment(feature.properties.ControlDateTime).format('LLL');
+                var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '</h3>Pct. contained: ' + feature.properties.PercentContained + '<br>Acres: ' + feature.properties.DailyAcres + '<br>Fire type: ' + feature.properties.IncidentTypeCategory + '<br>Discovery date: ' + discoveryDate + '<br>Control date: ' + controlDate;
 
                 if (feature.properties.DailyAcres < 1000) {
                     fireIcon = containedSmallFireIcon
@@ -239,7 +337,7 @@
 
                 return L.marker(latlng, {
                     icon: fireIcon
-                }).on('click', function() {
+                }).on('mouseover', function() {
                     this.bindPopup(popupInfo).openPopup();
                 });
             }
@@ -254,16 +352,19 @@
         $("#activeWildfires").click(function() {
             map.addLayer(activeWildfires)
             map.removeLayer(containedWildfires)
+            map.removeLayer(smallWildfires)
         });
 
         $("#containedWildfires").click(function() {
             map.addLayer(containedWildfires)
             map.removeLayer(activeWildfires)
+            map.removeLayer(smallWildfires)
         });
 
         $("#allWildfires").click(function() {
             map.addLayer(activeWildfires)
             map.addLayer(containedWildfires)
+            map.addLayer(smallWildfires)
         });
     });
     </script>
