@@ -99,8 +99,7 @@
         font-family: 'Roboto Condensed', sans-serif;
         font-size: 1.1rem;
         text-transform: uppercase;
-        margin-left: -20px;
-        margin-bottom: -13px;
+        margin: 3px 0 0 10px;
     }
 
     #legend-active,
@@ -118,15 +117,33 @@
         background: #000;
     }
 
-    .button {
-        width: 33%;
+    .map-topper-container {
+        border: 1px solid silver;
+        width: 50%;
+        height: 180px;
     }
 
-    @media only screen and (max-width: 699px) {
     .button {
-        width: 88%;
+        width: 49%;
     }
-}
+
+    @media only screen and (max-width: 449px) {
+        .button {
+            width: 88%;
+        }
+
+        .map-topper-container {
+            height: 300px;
+            overflow: scroll;
+        }
+    }
+
+    @media only screen and (min-width: 450px) and (max-width: 815px) {
+        .map-topper-container {
+            height: 210px;
+            overflow: scroll;
+        }
+    }
     </style>
 </head>
 
@@ -146,19 +163,19 @@
             </li>
         </ul>
     </div> -->
-    <div style="border: 1px solid silver;width:50%;float:left;">
-        <p class="legend-title" style="margin-left:10px">Tap to show</p>
-        <ul class="button-group" style="margin-top:20px">
+    <div class="map-topper-container" style="float:left">
+        <p class="legend-title">Tap to show</p>
+        <ul class="button-group" style="margin-top:10px;padding-right:10px">
             <li class="button" id="activeWildfires">Active wildfires<br>100+ acres</li>
             <li class="button" id="containedWildfires">Contained<br>wildfires</li>
             <li class="button" id="allWildfires">All<br>wildfires</li>
+            <li class="button" id="circleWildfires">Active wildfires<br>by size</li>
         </ul>
     </div>
-    <div style="border: 1px solid silver;width:50%;float:right;">
+    <div class="map-topper-container" style="float:right">
         <div class="legend-types">
-            <ul>
-                <p class="legend-title">Markers</p>
-                <br>
+            <p class="legend-title">Markers</p>
+            <ul style="margin-left:9px">
                 <li><img src="small-fire.png">
                     <p class="legend-marker-text">
                         < 1,000 acres</p> </li> <li><img src="medium-fire.png">
@@ -169,6 +186,8 @@
                 </li>
             </ul>
         </div>
+        <p class="legend-title" style="margin-top:-9px">Circles</p>
+        <p style="margin:0 0 0 10px;line-height: 1">Circle size is relative and not indicative of a fire's perimeter</p>
     </div>
     <div id="map"></div>
     <script>
@@ -190,19 +209,19 @@
     var smallFireIcon = L.icon({
         iconUrl: 'small-fire.png',
         iconSize: [35, 35],
-        iconAnchor: [20, 32],
+        iconAnchor: [17, 32],
         popupAnchor: [-2.5, -23]
     });
     var mediumFireIcon = L.icon({
         iconUrl: 'medium-fire.png',
         iconSize: [35, 35],
-        iconAnchor: [20, 32],
+        iconAnchor: [17, 32],
         popupAnchor: [-2.5, -23]
     });
     var largeFireIcon = L.icon({
         iconUrl: 'large-fire.png',
         iconSize: [35, 35],
-        iconAnchor: [20, 32],
+        iconAnchor: [17, 32],
         popupAnchor: [-2.5, -23]
     });
     var containedSmallFireIcon = L.icon({
@@ -287,7 +306,7 @@
                 var fireIcon;
                 var discoveryDate = moment(feature.properties.FireDiscoveryDateTime).format('LL');
                 var modifiedDate = moment(feature.properties.ModifiedOnDateTime).format('LLL');
-                var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '<br><span class="update">Updated ' + modifiedDate + '</span></h3>Acres: <strong>' + acres + '</strong><br>Containment: <strong>' + percentContained + '</strong><br>Cause: <strong>' + feature.properties.FireCause + '</strong><br>Discovered: <strong>' + discoveryDate + '</strong><br>Personnel assigned: <strong>' + personnel + '</strong><br>Fire complexity: <strong>' + complexity + '</strong><br><br>The fire is burning ' + landowner + city + ' in ' + feature.properties.POOCounty + ' County.<br><br><a href="https://www.google.com/maps?q=loc:' + feature.geometry.coordinates[1] + ',+' + feature.geometry.coordinates[0] + '&t=h" target="blank">Open in Google maps</a>';
+                var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '<br><span class="update">Updated ' + modifiedDate + '</span></h3>Acres: <strong>' + acres + '</strong><br>Containment: <strong>' + percentContained + '</strong><br>Cause: <strong>' + feature.properties.FireCause + '</strong><br>Discovered: <strong>' + discoveryDate + '</strong><br>Personnel assigned: <strong>' + personnel + '</strong><br>Fire complexity: <strong>' + complexity + '</strong><br><span style="display:block;margin-top:10px;line-height1.3">The fire is burning ' + landowner + city + ' in ' + feature.properties.POOCounty + ' County.</span><br><span style="display:block;margin-top:-5px;line-height:1.3;text-align:right;font-style:italic"><a href="https://www.google.com/maps?q=loc:' + feature.geometry.coordinates[1] + ',+' + feature.geometry.coordinates[0] + '&t=h" target="blank">Open in Google maps</a></span>';
 
                 if (feature.properties.DailyAcres < 1000) {
                     fireIcon = smallFireIcon
@@ -430,6 +449,112 @@
                 }).bindPopup(popupInfo).openPopup();
             }
         });
+
+        var circleWildfires = L.geoJson(data, {
+            filter: function(feature, layer) {
+                return feature.properties.PercentContained != 100 && feature.properties.DailyAcres > 100 && feature.properties.IncidentTypeCategory == 'WF';
+            },
+            pointToLayer: function(feature, latlng) {
+                //     if (feature.properties.PercentContained > 0) {
+                //     console.log(feature)
+                // };
+                var acres = feature.properties.DailyAcres;
+                var circleRadius;
+                var circleSize = Math.sqrt(acres) * .15;
+
+                // if (feature.properties.restricted == 'TRUE') {
+                //     circleSize = Math.sqrt(feature.properties.normal_storage) * .075
+                //     } else {
+                //     circleSize = 4
+                // };
+                // if (normalStorage < 1000) {
+                //     circleSize = 5
+                // } else if (normalStorage >= 1000 && normalStorage < 10000) {
+                //     circleSize = 10
+                // } else if (normalStorage >= 10000 && normalStorage < 50000) {
+                //     circleSize = 15
+                // } else circleSize = 20;
+
+
+
+                var activeCircle = {
+                    radius: circleSize,
+                    fillColor: "brown",
+                    color: "#aaa",
+                    weight: 0,
+                    opacity: 0,
+                    fillOpacity: .5
+                };
+                var notRestrictedCircle = {
+                    radius: circleSize,
+                    fillColor: "blue",
+                    color: "#aaa",
+                    weight: 0,
+                    opacity: 0,
+                    fillOpacity: .5
+                };
+
+
+                var percentContained;
+
+                if (feature.properties.PercentContained != null) {
+                    percentContained = feature.properties.PercentContained + '%'
+                } else percentContained = 'Unavailable';
+
+                var personnel;
+                if (feature.properties.TotalIncidentPersonnel != null) {
+                    personnel = feature.properties.TotalIncidentPersonnel
+                } else personnel = 'Unavailable';
+
+                var complexity;
+                if (feature.properties.FireMgmtComplexity != null) {
+                    complexity = feature.properties.FireMgmtComplexity
+                } else complexity = 'Unavailable';
+
+                var city;
+                var landowner;
+
+                if (feature.properties.POOCity != null) {
+                    city = 'near ' + feature.properties.POOCity
+                } else city = '';
+
+                // This makes non-agency names lowercase
+                String.prototype.lowercase = function() {
+                    return this.charAt(0).toLowerCase() + this.slice(1);
+                };
+
+                if (feature.properties.POOLandownerCategory != null) {
+                    if (feature.properties.POOLandownerCategory == 'Private' || feature.properties.POOLandownerCategory == 'County' || feature.properties.POOLandownerCategory == 'State' || feature.properties.POOLandownerCategory == 'Tribal') {
+                        landowner = 'on ' + feature.properties.POOLandownerCategory.lowercase() + ' land '
+                    } else landowner = 'on ' + feature.properties.POOLandownerCategory + ' land '
+                } else landowner = '';
+
+                var fireIcon;
+                var discoveryDate = moment(feature.properties.FireDiscoveryDateTime).format('LL');
+                var modifiedDate = moment(feature.properties.ModifiedOnDateTime).format('LLL');
+                var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '<br><span class="update">Updated ' + modifiedDate + '</span></h3>Acres: <strong>' + acres.toLocaleString() + '</strong><br>Containment: <strong>' + percentContained + '</strong><br>Cause: <strong>' + feature.properties.FireCause + '</strong><br>Discovered: <strong>' + discoveryDate + '</strong><br>Personnel assigned: <strong>' + personnel + '</strong><br>Fire complexity: <strong>' + complexity + '</strong><br><br>The fire is burning ' + landowner + city + ' in ' + feature.properties.POOCounty + ' County.<br><br><a href="https://www.google.com/maps?q=loc:' + feature.geometry.coordinates[1] + ',+' + feature.geometry.coordinates[0] + '&t=h" target="blank">Open in Google maps</a>';
+
+                if (feature.properties.DailyAcres < 1000) {
+                    fireIcon = smallFireIcon
+                } else if (feature.properties.DailyAcres < 10000) {
+                    fireIcon = mediumFireIcon
+                } else fireIcon = largeFireIcon;
+
+                //return L.Marker(latlng, fireIcon).bindPopup(popupInfo);
+
+                // return L.marker(latlng, {
+                //     icon: fireIcon
+                // }).on('mouseover', function() {
+                //     this.bindPopup(popupInfo).openPopup();
+                // });
+
+                return L.circleMarker(latlng, activeCircle).bindPopup(popupInfo).openPopup();
+
+                // return L.marker(latlng, {
+                //     icon: fireIcon
+                // }).bindPopup(popupInfo).openPopup();
+            }
+        });
         // map.fitBounds(allWildfires.getBounds(), {
         //     padding: [50, 50]
         // });
@@ -441,18 +566,28 @@
             map.addLayer(activeWildfires)
             map.removeLayer(containedWildfires)
             map.removeLayer(smallWildfires)
+            map.removeLayer(circleWildfires)
         });
 
         $("#containedWildfires").click(function() {
             map.addLayer(containedWildfires)
             map.removeLayer(activeWildfires)
             map.removeLayer(smallWildfires)
+            map.removeLayer(circleWildfires)
         });
 
         $("#allWildfires").click(function() {
             map.addLayer(activeWildfires)
             map.addLayer(containedWildfires)
             map.addLayer(smallWildfires)
+            map.removeLayer(circleWildfires)
+        });
+
+        $("#circleWildfires").click(function() {
+            map.addLayer(circleWildfires)
+            map.removeLayer(activeWildfires)
+            map.removeLayer(containedWildfires)
+            map.removeLayer(smallWildfires)
         });
     });
     </script>
