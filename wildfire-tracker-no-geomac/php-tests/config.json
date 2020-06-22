@@ -1,0 +1,6 @@
+{
+	"ftp_server": "ftp1.denverpost.com",
+	"ftp_user": "mntech\\dptemp",
+	"ftp_pass": "Nu3beP1g",
+	"ftp_path": "/DenverPost/app/wildfire/combined"
+}

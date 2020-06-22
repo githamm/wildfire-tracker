@@ -1,0 +1,3804 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-117.673, 44.7980200000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1582346460000,
+            "IncidentName": "RUCKLES LOOP",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591831644170,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Baker",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-OR",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-113.936, 46.4584400000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 10,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1586381067000,
+            "IncidentName": "D1 - Mutual Aid - Middle Burnt Fork",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591384350153,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Ravalli",
+            "POOLandownerCategory": null,
+            "POOState": "US-MT",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-114.4618, 32.9763300000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1587757740000,
+            "IncidentName": "Fisher Assist",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591749033483,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yuma",
+            "POOLandownerCategory": "State",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-94.5575, 46.2225]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1587759300000,
+            "IncidentName": "Valley Fire",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591974263017,
+            "PercentContained": 100,
+            "POOCity": "Cushing",
+            "POOCounty": "Morrison",
+            "POOLandownerCategory": null,
+            "POOState": "US-MN",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 14
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-81.5238889, 26.1911111000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 1000,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1589392800000,
+            "IncidentName": "22ND AVE SE",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591044381020,
+            "PercentContained": 100,
+            "POOCity": null,
+            "POOCounty": "Collier",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-FL",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-103.4502, 37.3674400000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 11828,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1589984880000,
+            "IncidentName": "Cherry Canyon ",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591203899263,
+            "PercentContained": 80,
+            "POOCity": "Kim",
+            "POOCounty": "Las Animas",
+            "POOLandownerCategory": "County",
+            "POOState": "US-CO",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": 1
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-96.29, 47.7027778]
+        },
+        "properties":
+        {
+            "DailyAcres": 1792,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1590077700000,
+            "IncidentName": "GRAVEL PIT",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591733275233,
+            "PercentContained": 100,
+            "POOCity": "Mentor",
+            "POOCounty": "Polk",
+            "POOLandownerCategory": "USFWS",
+            "POOState": "US-MN",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 36
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-141.6398, 65.09382]
+        },
+        "properties":
+        {
+            "DailyAcres": 218.46,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1590188580000,
+            "IncidentName": "Trout Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591326809893,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Southeast Fairbanks",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-118.996081473, 35.4974083660001]
+        },
+        "properties":
+        {
+            "DailyAcres": 5.3,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1590797700000,
+            "IncidentName": "PEAK",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591988210317,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Kern",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-117.674, 34.22612]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1590811440000,
+            "IncidentName": "SUNSET",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591837335717,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Los Angeles",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-162.36182, 63.1591500000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 25.6,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590890700000,
+            "IncidentName": "St Michael",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591503269600,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Kusilvak",
+            "POOLandownerCategory": "USFWS",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": 3
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-164.031667, 61.3655]
+        },
+        "properties":
+        {
+            "DailyAcres": 14369.4,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590889761000,
+            "IncidentName": "Ingakslugwat Hills",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591988255040,
+            "PercentContained": 0,
+            "POOCity": "Chevak, AK",
+            "POOCounty": "Kusilvak",
+            "POOLandownerCategory": "USFWS",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-164.450333, 61.3218330000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 11897.4,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590897763000,
+            "IncidentName": "Manokinak River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591923602180,
+            "PercentContained": 0,
+            "POOCity": "Chevak",
+            "POOCounty": "Kusilvak",
+            "POOLandownerCategory": "USFWS",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-153.796167, 62.96]
+        },
+        "properties":
+        {
+            "DailyAcres": 164.2,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590897131000,
+            "IncidentName": "Little Tonzona River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591901538723,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": "State",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-111.2973, 33.40184]
+        },
+        "properties":
+        {
+            "DailyAcres": 24729,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590902880000,
+            "IncidentName": "Sawtooth",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591910412420,
+            "PercentContained": 95,
+            "POOCity": "Queen Valley",
+            "POOCounty": "Pinal",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 26
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-156.491, 62.54495]
+        },
+        "properties":
+        {
+            "DailyAcres": 168.9,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590963407000,
+            "IncidentName": "Big Waldren Fork",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591923144067,
+            "PercentContained": 0,
+            "POOCity": "McGrath",
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": "State",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-110.5948, 31.33756]
+        },
+        "properties":
+        {
+            "DailyAcres": 440,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590963360000,
+            "IncidentName": "RAFAEL",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591580832780,
+            "PercentContained": 75,
+            "POOCity": "Lochiel",
+            "POOCounty": "Santa Cruz",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 4
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-162.523617, 61.9130670000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 82.1,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590966677000,
+            "IncidentName": "Center Slough",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591395407157,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Kusilvak",
+            "POOLandownerCategory": "USFWS",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-158.497233, 62.1153330000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 50.9,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590885502000,
+            "IncidentName": "Smith Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591330086280,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Bethel",
+            "POOLandownerCategory": "State",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-147.6942, 64.67729]
+        },
+        "properties":
+        {
+            "DailyAcres": 1285.1,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590968640000,
+            "IncidentName": "Clear Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591921093697,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Fairbanks North Star",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": 10
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-112.2297, 33.3779000000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 125,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1590967200000,
+            "IncidentName": "Peeposh",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591124705460,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Maricopa",
+            "POOLandownerCategory": "BIA",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-163.0625, 61.4108330000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 3524.9,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590976842000,
+            "IncidentName": "Izaviknek River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591922906587,
+            "PercentContained": 0,
+            "POOCity": "Pilot Station",
+            "POOCounty": "Bethel",
+            "POOLandownerCategory": "USFWS",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-162.770917, 61.4050330000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 241.7,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590983710000,
+            "IncidentName": "Kuka Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591549424160,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Bethel",
+            "POOLandownerCategory": "USFWS",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-161.8393, 62.1300800000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 507.5,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590989160000,
+            "IncidentName": "Nageethluk River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591921749017,
+            "PercentContained": 1,
+            "POOCity": null,
+            "POOCounty": "Kusilvak",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-84.4539, 30.3864300000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 1372,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591012738000,
+            "IncidentName": "BU 216",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591052112000,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Leon",
+            "POOLandownerCategory": null,
+            "POOState": "US-FL",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-118.616809845, 36.785469869]
+        },
+        "properties":
+        {
+            "DailyAcres": 245,
+            "FireCause": null,
+            "FireDiscoveryDateTime": 1590336047000,
+            "IncidentName": "Cedar Central RX",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591037918787,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Fresno",
+            "POOLandownerCategory": null,
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-158.37369, 63.62922]
+        },
+        "properties":
+        {
+            "DailyAcres": 44.1,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591057200000,
+            "IncidentName": "Innoko",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591731106960,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-156.9028, 64.8982300000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.3,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591062060000,
+            "IncidentName": "Bear Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591900624277,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-156.9038, 64.89275]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.3,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591062420000,
+            "IncidentName": "Bear Creek 2",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591900328267,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": "USFWS",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-162.8602, 67.90655]
+        },
+        "properties":
+        {
+            "DailyAcres": 432,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591067460000,
+            "IncidentName": "Red Dog",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591922704020,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-153.8247, 64.85067]
+        },
+        "properties":
+        {
+            "DailyAcres": 1200,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591068840000,
+            "IncidentName": "Bering Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591682315410,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-164.3232, 61.6274670000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 14931.6,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1590984610000,
+            "IncidentName": "Kochilagok Hill",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591982673810,
+            "PercentContained": 0,
+            "POOCity": "Chevak",
+            "POOCounty": "Kusilvak",
+            "POOLandownerCategory": "USFWS",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-164.32105, 61.402883]
+        },
+        "properties":
+        {
+            "DailyAcres": 13030.3,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591069306000,
+            "IncidentName": "Iwaktok Hill",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591922383743,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Kusilvak",
+            "POOLandownerCategory": "USFWS",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-89.57446, 32.10882]
+        },
+        "properties":
+        {
+            "DailyAcres": 423,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591102920000,
+            "IncidentName": "BIENVILLE BB CPT 270 S",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591108607170,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Smith",
+            "POOLandownerCategory": null,
+            "POOState": "US-MS",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-157.9365, 64.28844]
+        },
+        "properties":
+        {
+            "DailyAcres": 21.7,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591150380000,
+            "IncidentName": "Khotol Slough",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591583384467,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-97.0168199999999, 34.2434400000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 280,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591198483000,
+            "IncidentName": "CRCC ",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591198539957,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Carter",
+            "POOLandownerCategory": null,
+            "POOState": "US-OK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-105.6029, 48.9557]
+        },
+        "properties":
+        {
+            "DailyAcres": 437,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591128120000,
+            "IncidentName": "The Windy",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591573090873,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Daniels",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-MT",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-164.87441, 65.7419300000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 267.5,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591226460000,
+            "IncidentName": "Macklin",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591899832857,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Nome",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-156.8705, 63.8188300000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 600,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591230180000,
+            "IncidentName": "Wapoo Creek ",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591923033980,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-160.3014, 65.7228600000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 220.6,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591235820000,
+            "IncidentName": "Brush Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591724697757,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-158.5434, 66.1127900000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 31.3,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591236300000,
+            "IncidentName": "Continental Divide",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591730248997,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-163.2142, 65.0137500000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 34,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591239600000,
+            "IncidentName": "White Mountain 2",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591636547680,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Nome",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-156.85405, 63.8092700000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 900,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591241820000,
+            "IncidentName": "Wapoo Creek 2",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591923264743,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-159.6179, 65.85587]
+        },
+        "properties":
+        {
+            "DailyAcres": 246.1,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591241160000,
+            "IncidentName": "Middle Fork Buckland",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591923616950,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-163.3728, 65.05192]
+        },
+        "properties":
+        {
+            "DailyAcres": 5,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591251300000,
+            "IncidentName": "Paragon River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591897533223,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Nome",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-163.1422, 64.98193]
+        },
+        "properties":
+        {
+            "DailyAcres": 3.4,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591252080000,
+            "IncidentName": "Fish River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591917738250,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Nome",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-162.7262, 64.92201]
+        },
+        "properties":
+        {
+            "DailyAcres": 2.4,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591293720000,
+            "IncidentName": "Omilak Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591896295440,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Nome",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-159.6855, 64.87447]
+        },
+        "properties":
+        {
+            "DailyAcres": 5,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591294020000,
+            "IncidentName": "Ungalik River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591895561627,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-157.0294, 66.12001]
+        },
+        "properties":
+        {
+            "DailyAcres": 2324.8,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591311840000,
+            "IncidentName": "Billy Hawk Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591924524637,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": "USFWS",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-154.2993, 66.32973]
+        },
+        "properties":
+        {
+            "DailyAcres": 93,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591314960000,
+            "IncidentName": "Hogatza",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591904156833,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-155.8563, 66.28378]
+        },
+        "properties":
+        {
+            "DailyAcres": 185,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591321800000,
+            "IncidentName": "Zane Hills",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591925901853,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-160.6004, 68.0719]
+        },
+        "properties":
+        {
+            "DailyAcres": 1043.1,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591314540000,
+            "IncidentName": "Imikneyak Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591926453123,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-159.9898, 68.2599300000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 1643.4,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591314480000,
+            "IncidentName": "Nimiuktuk River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591924877800,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-158.377, 66.2631000000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 112.3,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591327260000,
+            "IncidentName": "Kerulu Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591926891140,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-84.47166, 30.2806400000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 2404,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591361820000,
+            "IncidentName": "BU 303",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591636389473,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Wakulla",
+            "POOLandownerCategory": null,
+            "POOState": "US-FL",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-150.8544, 66.2219400000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 467.2,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591372860000,
+            "IncidentName": "Kanuti River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591819094553,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-159.9374, 68.2590000000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 1147.2,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591387980000,
+            "IncidentName": "Tumit Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591927170347,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-108.6878, 43.9455600000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1591388280000,
+            "IncidentName": "GRASS CREEK",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591904184207,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Hot Springs",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-WY",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-149.5792, 65.85378]
+        },
+        "properties":
+        {
+            "DailyAcres": 10618.8,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591399140000,
+            "IncidentName": "Isom Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591980258060,
+            "PercentContained": 10,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": "State",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 2 Incident",
+            "TotalIncidentPersonnel": 275
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-159.3995, 67.91886]
+        },
+        "properties":
+        {
+            "DailyAcres": 186.8,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591399980000,
+            "IncidentName": "Aklumayuak Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591639274453,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-161.3551, 68.0152600000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 424.6,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591401660000,
+            "IncidentName": "Kuyak Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591928249837,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-154.5595, 66.84995]
+        },
+        "properties":
+        {
+            "DailyAcres": 80.6,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591402740000,
+            "IncidentName": "Lower Kobuk Canyon",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591654311220,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-110.3581, 33.4345000000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 30379,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591403280000,
+            "IncidentName": "Blue River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591924271957,
+            "PercentContained": 50,
+            "POOCity": "10 miles NE of San Carlos, AZ",
+            "POOCounty": "Gila",
+            "POOLandownerCategory": "BIA",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 144
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-159.4793, 67.91891]
+        },
+        "properties":
+        {
+            "DailyAcres": 255.7,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591408140000,
+            "IncidentName": "Aklumayuak Creek 2",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591637203210,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-108.4423, 39.18314]
+        },
+        "properties":
+        {
+            "DailyAcres": 170,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591410360000,
+            "IncidentName": "Little Bookcliff",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591914120973,
+            "PercentContained": 70,
+            "POOCity": null,
+            "POOCounty": "Mesa",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-CO",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 5
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-110.9265, 32.37803]
+        },
+        "properties":
+        {
+            "DailyAcres": 7098,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591419900000,
+            "IncidentName": "BIGHORN",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591971622083,
+            "PercentContained": 10,
+            "POOCity": null,
+            "POOCounty": "Pima",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 1 Incident",
+            "TotalIncidentPersonnel": 419
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-109.3116, 33.4151]
+        },
+        "properties":
+        {
+            "DailyAcres": 5200,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591459680000,
+            "IncidentName": "Bringham",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591992849107,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Greenlee",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 180
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-109.8649, 33.3847200000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 4348,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591458540000,
+            "IncidentName": "Dry Lake",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591924773407,
+            "PercentContained": 15,
+            "POOCity": "2 miles NW of Dry Lake",
+            "POOCounty": "Graham",
+            "POOLandownerCategory": "BIA",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 113
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-104.2206667, 37.1116667000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 2521,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591398900000,
+            "IncidentName": "Barela Fire",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591465469527,
+            "PercentContained": 100,
+            "POOCity": "Hoehne",
+            "POOCounty": "Las Animas",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-CO",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-109.3729, 32.0951200000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 4756,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591446000000,
+            "IncidentName": "EMIGRANT",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591922950167,
+            "PercentContained": 90,
+            "POOCity": null,
+            "POOCounty": "Cochise",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 60
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-152.1878, 65.78421]
+        },
+        "properties":
+        {
+            "DailyAcres": 86.5,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591466340000,
+            "IncidentName": "Ray Mountain",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591847410923,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-108.3334, 33.1832900000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 7640,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591463340000,
+            "IncidentName": "Good",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591971775590,
+            "PercentContained": 0,
+            "POOCity": "Silver City",
+            "POOCounty": "Grant",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-NM",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 69
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-109.3136, 33.40443]
+        },
+        "properties":
+        {
+            "DailyAcres": 31,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591467420000,
+            "IncidentName": "Tinny",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591544641633,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Greenlee",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-109.864, 33.73987]
+        },
+        "properties":
+        {
+            "DailyAcres": 3,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591463940000,
+            "IncidentName": "Norman",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591813515940,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Apache",
+            "POOLandownerCategory": "BIA",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-108.2732, 32.9544500000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 6200,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591473060000,
+            "IncidentName": "Tadpole",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591990216787,
+            "PercentContained": 15,
+            "POOCity": "Silver City",
+            "POOCounty": "Grant",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-NM",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 169
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-108.2502, 33.1833600000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 1800,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591464960000,
+            "IncidentName": "Turkey",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591983149357,
+            "PercentContained": 0,
+            "POOCity": "Silver City",
+            "POOCounty": "Grant",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-NM",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 41
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-151.5793, 67.34972]
+        },
+        "properties":
+        {
+            "DailyAcres": 169.2,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591481700000,
+            "IncidentName": "Madison Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591819729873,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-122.048005, 38.4704850000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 1837,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591482603000,
+            "IncidentName": "QUAIL",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591797454460,
+            "PercentContained": 100,
+            "POOCity": null,
+            "POOCounty": "Solano",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 32
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-118.4511111, 35.45]
+        },
+        "properties":
+        {
+            "DailyAcres": 4.2,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591483500000,
+            "IncidentName": "BEAR",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591741467860,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Kern",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-107.1835, 32.5001800000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 930,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591479660000,
+            "IncidentName": "Uvas",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591929225863,
+            "PercentContained": 75,
+            "POOCity": "Hatch",
+            "POOCounty": "Doña Ana",
+            "POOLandownerCategory": "State",
+            "POOState": "US-NM",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 10
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-104.2738889, 35.8658333000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 17000,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591488000000,
+            "IncidentName": "Farm Camp",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591984692690,
+            "PercentContained": 70,
+            "POOCity": "Mosquero, NM",
+            "POOCounty": "Harding",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-NM",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 36
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-157.2418, 64.95685]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.2,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591504920000,
+            "IncidentName": "Nikolai Slough",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591905989130,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-161.9587, 62.6667]
+        },
+        "properties":
+        {
+            "DailyAcres": 4,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591560060000,
+            "IncidentName": "East Fork Andreafsky River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591894370533,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Kusilvak",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-161.0981, 65.7893700000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 10,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591572300000,
+            "IncidentName": "Fairhaven Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591894480083,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Northwest Arctic",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-120.0821, 47.27686]
+        },
+        "properties":
+        {
+            "DailyAcres": 40,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591577880000,
+            "IncidentName": "ROCKY POINT",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591628632470,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Douglas",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-WA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-103.3399, 37.0199400000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 3872,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591573680000,
+            "IncidentName": "Deer Canyon ",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591918385040,
+            "PercentContained": 30,
+            "POOCity": "Kim",
+            "POOCounty": "Las Animas",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-CO",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 19
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-106.3716, 42.63874]
+        },
+        "properties":
+        {
+            "DailyAcres": 180,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1548779001000,
+            "IncidentName": "BATES HOLE RX",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591630243323,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Natrona",
+            "POOLandownerCategory": null,
+            "POOState": "US-WY",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-104.8705, 42.3942000000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591559167000,
+            "IncidentName": "SAWMILL",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591889738170,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Platte",
+            "POOLandownerCategory": "DOD",
+            "POOState": "US-WY",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-105.1248, 35.2912200000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 33,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591553988000,
+            "IncidentName": "Apache Springs",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591640389703,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "San Miguel",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-NM",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-112.1404, 34.10127]
+        },
+        "properties":
+        {
+            "DailyAcres": 33,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591637040000,
+            "IncidentName": "Spring",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591719982590,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yavapai",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-112.3495, 36.6275900000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 500,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591655040000,
+            "IncidentName": "MANGUM",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591985249870,
+            "PercentContained": 2,
+            "POOCity": "FREDONIA",
+            "POOCounty": "Coconino",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 2 Incident",
+            "TotalIncidentPersonnel": 194
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-110.465, 33.3414300000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 95,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591680660000,
+            "IncidentName": "Peridot",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591829833963,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Gila",
+            "POOLandownerCategory": "BIA",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-118.8185, 36.6505000000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591659420000,
+            "IncidentName": "CABIN CREEK",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591903333610,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Tulare",
+            "POOLandownerCategory": "NPS",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-120.444067, 38.10765]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1591726821000,
+            "IncidentName": "THOMPSON",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591897942390,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Calaveras",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-120.974238047, 38.820468815]
+        },
+        "properties":
+        {
+            "DailyAcres": 28.4,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1591735038000,
+            "IncidentName": "CRONAN",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591829676693,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "El Dorado",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-117.3508333, 33.3791667]
+        },
+        "properties":
+        {
+            "DailyAcres": 1100,
+            "FireCause": null,
+            "FireDiscoveryDateTime": 1591734960000,
+            "IncidentName": "INDIA",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591965686480,
+            "PercentContained": 90,
+            "POOCity": "Camp Pendleton",
+            "POOCounty": "San Diego",
+            "POOLandownerCategory": "DOD",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 4
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-142.1595, 67.52997]
+        },
+        "properties":
+        {
+            "DailyAcres": 867.7,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591745160000,
+            "IncidentName": "Rabbit Mountain",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591987207827,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-117.977, 34.34338]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.5,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591750209000,
+            "IncidentName": "THREE",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591817695873,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Los Angeles",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-157.1828, 61.04875]
+        },
+        "properties":
+        {
+            "DailyAcres": 574,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591762389000,
+            "IncidentName": "Taylor Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591982484443,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Bethel",
+            "POOLandownerCategory": "State",
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-98.26634, 35.04942]
+        },
+        "properties":
+        {
+            "DailyAcres": 1.1,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1591745400000,
+            "IncidentName": "DOG POUND",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591811336373,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Caddo",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-OK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-105.7937, 46.44728]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1591634520000,
+            "IncidentName": "Murn - Custer",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591807589640,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Custer",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-MT",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-104.7605, 42.3173100000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 3,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1591810440000,
+            "IncidentName": "FISH CANYON",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591820723020,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Platte",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-WY",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-119.1833333, 34.3047222000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 300,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591810320000,
+            "IncidentName": "ELIZABETH",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591966757630,
+            "PercentContained": 95,
+            "POOCity": "Ventura",
+            "POOCounty": "Ventura",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 42
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-119.956015, 35.351296]
+        },
+        "properties":
+        {
+            "DailyAcres": 1672,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591820933000,
+            "IncidentName": "SODA",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591928218427,
+            "PercentContained": 100,
+            "POOCity": null,
+            "POOCounty": "San Luis Obispo",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 35
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-120.0913, 47.2971200000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 5,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591818630000,
+            "IncidentName": "TARPISCAN ",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591825538827,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Chelan",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-WA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-113.4497, 46.89214]
+        },
+        "properties":
+        {
+            "DailyAcres": 5,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591800480000,
+            "IncidentName": "SWS - Lubrecht Engine Academy",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591975993690,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Missoula",
+            "POOLandownerCategory": null,
+            "POOState": "US-MT",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-111.4477, 31.4976500000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 250,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591825860000,
+            "IncidentName": "CANOA",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591922956870,
+            "PercentContained": 45,
+            "POOCity": null,
+            "POOCounty": "Pima",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 142
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-123.2365, 42.8903500000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591831860000,
+            "IncidentName": "RBG BLM THREAT",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591893746287,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Douglas",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-OR",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-116.4382, 32.84925]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591825200000,
+            "IncidentName": "WOODED",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591832593537,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "San Diego",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-119.687, 48.0942000000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591833840000,
+            "IncidentName": "Cassimer Bar",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591898289340,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Okanogan",
+            "POOLandownerCategory": "BIA",
+            "POOState": "US-WA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-148.5896, 66.00426]
+        },
+        "properties":
+        {
+            "DailyAcres": 83.3,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591828860000,
+            "IncidentName": "Alfred Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591936656613,
+            "PercentContained": 0,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 48
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-113.4123, 37.14142]
+        },
+        "properties":
+        {
+            "DailyAcres": 5.5,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1591831380000,
+            "IncidentName": "Pecan",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591841484627,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Washington",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-UT",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-118.7725, 34.4625]
+        },
+        "properties":
+        {
+            "DailyAcres": 898,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591831800000,
+            "IncidentName": "LIME",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591966670150,
+            "PercentContained": 20,
+            "POOCity": "Piru",
+            "POOCounty": "Ventura",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 3 Incident",
+            "TotalIncidentPersonnel": 119
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-148.31, 66.1261700000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591850580000,
+            "IncidentName": "Butte Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591854141033,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-118.3845, 34.31474]
+        },
+        "properties":
+        {
+            "DailyAcres": 1,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591859077000,
+            "IncidentName": "MEMORIAL",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591903974140,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Los Angeles",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-80.33118, 25.51944]
+        },
+        "properties":
+        {
+            "DailyAcres": 1.5,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591879328000,
+            "IncidentName": "C-102",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591886957473,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Miami-Dade",
+            "POOLandownerCategory": null,
+            "POOState": "US-FL",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-94.74432, 34.7811300000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 34,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591886730000,
+            "IncidentName": "Well Hollow WIT SU3 and 4",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591906978140,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Le Flore",
+            "POOLandownerCategory": null,
+            "POOState": "US-OK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-80.8193199999999, 33.83088]
+        },
+        "properties":
+        {
+            "DailyAcres": 17,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591198365000,
+            "IncidentName": "Congaree RX #1",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591890875557,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Richland",
+            "POOLandownerCategory": null,
+            "POOState": "US-SC",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-98.2297222, 36.2605556]
+        },
+        "properties":
+        {
+            "DailyAcres": 387.8,
+            "FireCause": null,
+            "FireDiscoveryDateTime": 1591814700000,
+            "IncidentName": "Ames Fire",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591985882840,
+            "PercentContained": 51,
+            "POOCity": null,
+            "POOCounty": "Major",
+            "POOLandownerCategory": "State",
+            "POOState": "US-OK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 44
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-98.3722221999999, 36.3255556]
+        },
+        "properties":
+        {
+            "DailyAcres": 6042,
+            "FireCause": null,
+            "FireDiscoveryDateTime": 1591823700000,
+            "IncidentName": "Yolo Ranch Fire",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591986442997,
+            "PercentContained": 39,
+            "POOCity": null,
+            "POOCounty": "Major",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-OK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 90
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-99.1330556, 36.8844444000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 550,
+            "FireCause": null,
+            "FireDiscoveryDateTime": 1591811100000,
+            "IncidentName": "180&Kiowa Rd. Fire",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591986895317,
+            "PercentContained": 75,
+            "POOCity": null,
+            "POOCounty": "Woods",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-OK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 4 Incident",
+            "TotalIncidentPersonnel": 9
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-150.9914, 65.6212200000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 20,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591897500000,
+            "IncidentName": "Tozitna River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591932248473,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-108.4821, 42.9913500000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 1.2,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591904460000,
+            "IncidentName": "W 300 LEFTHAND DITCH",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591907052597,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Fremont",
+            "POOLandownerCategory": "BIA",
+            "POOState": "US-WY",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-120.6165, 44.4235800000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591906740000,
+            "IncidentName": "220 PR",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591977428237,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Crook",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-OR",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-121.464, 43.0107900000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 2.4,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591905109000,
+            "IncidentName": "Rock",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591917489153,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Klamath",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-OR",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-151.8947, 65.79445]
+        },
+        "properties":
+        {
+            "DailyAcres": 300,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591908900000,
+            "IncidentName": "Banddana Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591936245147,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-148.3888, 65.68082]
+        },
+        "properties":
+        {
+            "DailyAcres": 1,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591908720000,
+            "IncidentName": "Wilson Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591911594537,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-107.3925, 45.1341600000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1591907265000,
+            "IncidentName": "Wyola Dumpster 2",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591910704370,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Big Horn",
+            "POOLandownerCategory": "BIA",
+            "POOState": "US-MT",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-107.9864, 38.95694]
+        },
+        "properties":
+        {
+            "DailyAcres": 40,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591909380000,
+            "IncidentName": "Squirrel Rock",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591935118150,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Delta",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-CO",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-121.4278, 44.3726100000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591918717000,
+            "IncidentName": "MOUNTAIN VIEW",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591922484407,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Deschutes",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-OR",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-159.1733, 63.59578]
+        },
+        "properties":
+        {
+            "DailyAcres": 2,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591920420000,
+            "IncidentName": "Papa Willie Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591933229047,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-100.921666667, 30.653055556]
+        },
+        "properties":
+        {
+            "DailyAcres": 2000,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591916499000,
+            "IncidentName": "Arroyo Grande",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591990073063,
+            "PercentContained": 30,
+            "POOCity": null,
+            "POOCounty": "Sutton",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-TX",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": 25
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-113.5117, 34.94205]
+        },
+        "properties":
+        {
+            "DailyAcres": 96,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591918560000,
+            "IncidentName": "SANDY",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591982492637,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Mohave",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-151.1627, 64.8633300000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 1,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591923120000,
+            "IncidentName": "Cosna River",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591925319177,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-149.9937, 65.89462]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.25,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591923540000,
+            "IncidentName": "Big Salt",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591936639330,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-151.1522, 64.8609900000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 2,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591923060000,
+            "IncidentName": "Rock Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591925333443,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-112.3384, 33.83882]
+        },
+        "properties":
+        {
+            "DailyAcres": 85,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591924380000,
+            "IncidentName": " Hot  ",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591991235133,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Maricopa",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-159.9451, 63.26613]
+        },
+        "properties":
+        {
+            "DailyAcres": 5,
+            "FireCause": "Natural",
+            "FireDiscoveryDateTime": 1591928340000,
+            "IncidentName": "Simon Creek",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591928857833,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-121.3717, 44.34742]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591924326000,
+            "IncidentName": "0224 ",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591934487647,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Deschutes",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-OR",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-101.709133333, 35.6891833330001]
+        },
+        "properties":
+        {
+            "DailyAcres": 2000,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591924779000,
+            "IncidentName": "Blue West",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591992068160,
+            "PercentContained": 80,
+            "POOCity": null,
+            "POOCounty": "Moore",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-TX",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": "Type 5 Incident",
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-112.7375, 40.0178000000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 10,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591957800000,
+            "IncidentName": "Winter Springs",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591982084450,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Tooele",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-UT",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-88.92479, 30.92161]
+        },
+        "properties":
+        {
+            "DailyAcres": 410,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591967988000,
+            "IncidentName": "DE SOTO BB 7202 -DEEP CREEK",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591973454663,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Perry",
+            "POOLandownerCategory": null,
+            "POOState": "US-MS",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-91.0087, 31.4173000000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 258,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591969738000,
+            "IncidentName": "Homochitto BB49 Sub unit 3",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591971180407,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Franklin",
+            "POOLandownerCategory": null,
+            "POOState": "US-MS",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-88.9996599999999, 34.8736900000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 81,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591972521000,
+            "IncidentName": "HOLLY SPRINGS BB 19",
+            "IncidentTypeCategory": "RX",
+            "ModifiedOnDateTime": 1591993541770,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Tippah",
+            "POOLandownerCategory": null,
+            "POOState": "US-MS",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-123.1953, 43.0482700000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.2,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591979400000,
+            "IncidentName": "BLM Threat - Saddle Fire",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591982180400,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Douglas",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-OR",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-118.1631, 34.2972]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591980840000,
+            "IncidentName": "CANYON",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591982737980,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Los Angeles",
+            "POOLandownerCategory": "USFS",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-110.4583, 33.29602]
+        },
+        "properties":
+        {
+            "DailyAcres": 15,
+            "FireCause": "Human",
+            "FireDiscoveryDateTime": 1591985340000,
+            "IncidentName": "Big Boy",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591989709410,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Gila",
+            "POOLandownerCategory": "BIA",
+            "POOState": "US-AZ",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-113.864, 41.3834900000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 700,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591983900000,
+            "IncidentName": "Lucin",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591991301530,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Box Elder",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-UT",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-116.0286, 32.64241]
+        },
+        "properties":
+        {
+            "DailyAcres": 5,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591989000000,
+            "IncidentName": "MYER",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591996101480,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Imperial",
+            "POOLandownerCategory": "BLM",
+            "POOState": "US-CA",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-107.5725, 45.60744]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.5,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591991220000,
+            "IncidentName": "Highway 1 Incident 140",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591992481837,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Big Horn",
+            "POOLandownerCategory": "BIA",
+            "POOState": "US-MT",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-104.2766, 40.19408]
+        },
+        "properties":
+        {
+            "DailyAcres": 0.1,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591987320000,
+            "IncidentName": "IA 215",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591993446933,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Weld",
+            "POOLandownerCategory": "Private",
+            "POOState": "US-CO",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry":
+        {
+            "type": "Point",
+            "coordinates": [-158.6985, 65.2640100000001]
+        },
+        "properties":
+        {
+            "DailyAcres": 2,
+            "FireCause": "Unknown",
+            "FireDiscoveryDateTime": 1591996740000,
+            "IncidentName": "Arvesta Creek ",
+            "IncidentTypeCategory": "WF",
+            "ModifiedOnDateTime": 1591997118180,
+            "PercentContained": null,
+            "POOCity": null,
+            "POOCounty": "Yukon-Koyukuk",
+            "POOLandownerCategory": null,
+            "POOState": "US-AK",
+            "ContainmentDateTime": null,
+            "FireMgmtComplexity": null,
+            "TotalIncidentPersonnel": null
+        }
+    }]
+}
