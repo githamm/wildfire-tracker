@@ -7,7 +7,9 @@ if (!function_exists('get_config')) {
     }
 }
 
-$wildfireJson = file_get_contents("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/Active_Fires/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson");
+//$wildfireJson = file_get_contents("https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/Active_Fires/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson");
+
+$wildfireJson = file_get_contents("https://opendata.arcgis.com/datasets/9838f79fb30941d2adde6710e9d6b0df_0.geojson");
 
     function ftp_json($file,$config) {
         $success = false;

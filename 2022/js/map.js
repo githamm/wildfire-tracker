@@ -1,236 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="robots" content="noindex,follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>United States Wildfire Map | The Denver Post</title>
-    <link rel="shortcut icon" href="https://extras.mnginteractive.com/live/media/favIcon/dpo/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.14/c3.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:700|Roboto+Mono" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
-    <script src="https://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
-    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
-    <script src="moment.js"></script>
-    <style>
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 5px;
-        font-family: 'Roboto', sans-serif;
-    }
-
-    #map {
-        width: 100%;
-        height: 600px;
-        border: 1px solid silver;
-    }
-
-    .leaflet-popup-content-wrapper {
-        border-radius: 0;
-        max-width: 260px;
-    }
-
-    .leaflet-popup-content-wrapper,
-    .leaflet-popup-tip {
-        background: #fafafa;
-    }
-
-    .leaflet-popup-content {
-        font-size: .9rem;
-    }
-
-    .fire-name {
-        font-family: 'Roboto Condensed', sans-serif;
-        font-size: 1.2rem;
-        color: #c03639;
-        text-transform: uppercase;
-        border-bottom: 1px solid #c3c3c3;
-        margin: 0 0 8px 0;
-    }
-
-    .update {
-        display: block;
-        font-family: 'Roboto', sans-serif;
-        font-size: .8rem;
-        color: #9b9b9b;
-        font-style: italic;
-        text-transform: none;
-        margin: 0 0 5px 0;
-    }
-
-    .credit {
-        font-size: .8rem;
-        /*color: #9b9b9b;*/
-        font-style: italic;
-        text-align: right;
-        margin-top: 5px;
-    }
-
-    ul>li {
-        display: inline-block;
-        zoom: 1;
-        *display: inline;
-    }
-
-    .legend-types {
-        display: inline-block;
-        zoom: 1;
-        *display: inline;
-    }
-
-    .legend-marker-text {
-        margin-top: -32px;
-        margin-left: 35px;
-        margin-right: 10px;
-    }
-
-    .legend-perimeter-text {
-        margin-top: -17px;
-        margin-left: 23px;
-        margin-right: 10px;
-    }
-
-    .legend-title {
-        font-family: 'Roboto Condensed', sans-serif;
-        font-size: 1.1rem;
-        text-transform: uppercase;
-        margin: 3px 0 0 10px;
-    }
-
-    #legend-active,
-    #legend-inactive {
-        height: 17px;
-        width: 17px;
-        border-radius: 50%;
-    }
-
-    #legend-active {
-        background: #c03639;
-    }
-
-    #legend-inactive {
-        background: #000;
-    }
-
-    .map-topper-container-left,
-    .map-topper-container-right {
-        border: 1px solid silver;
-        height: 180px;
-    }
-
-    .map-topper-container-left {
-        float: left;
-        width: 45%;
-    }
-
-    .map-topper-container-right {
-        float: right;
-        width: 55%;
-    }
-
-    .button {
-        width: 49%;
-    }
-
-    @media only screen and (max-width: 449px) {
-        .button {
-            width: 88%;
-        }
-
-        .map-topper-container-left,
-        .map-topper-container-right {
-            height: 300px;
-            overflow: scroll;
-        }
-    }
-
-    @media only screen and (min-width: 450px) and (max-width: 815px) {
-
-        .map-topper-container-left,
-        .map-topper-container-right {
-            height: 210px;
-            overflow: scroll;
-        }
-    }
-    </style>
-</head>
-
-<body>
-    <div class="map-topper-container-left">
-        <p class="legend-title">Tap to show</p>
-        <ul class="button-group" style="margin-top:10px;padding-right:10px">
-            <li class="button" id="allWildfires">All active<br>wildfires</li>
-            <li class="button" id="activeWildfires">Active wildfires<br>100+ acres</li>
-            <li class="button" id="circleWildfires">Active wildfires<br>by size</li>
-            <li class="button" id="incidentType1Wildfires">Type 1 & 2<br>active wildfires</li>
-        </ul>
-    </div>
-    <div class="map-topper-container-right">
-        <div class="legend-types">
-            <p class="legend-title">Markers</p>
-            <ul style="margin-left:9px">
-                <li><img src="small-fire.png">
-                    <p class="legend-marker-text">
-                        < 1,000 acres</p> </li> <li><img src="medium-fire.png">
-                            <p class="legend-marker-text">1,000-10,000 acres</p>
-                </li>
-                <li><img src="large-fire.png">
-                    <p class="legend-marker-text">10,000+ acres</p>
-                </li>
-            </ul>
-        </div>
-        <p class="legend-title" style="margin-top:-9px">Circles</p>
-        <p style="margin:0 0 0 10px;line-height: 1">Circle size is relative and not indicative of a fire's perimeter</p>
-    </div>
-    <div id="map"></div>
-    <p class="credit">Source: <a href="https://data-nifc.opendata.arcgis.com/" target="_blank">National Interagency Fire Center</a> &bull; Map markers from <a href="https://mapicons.mapsmarker.com/" target="_blank">Map Icons Collection</a> &bull; Map by Kevin Hamm, The Denver Post</p>
-    <script>
+$(document).ready(function() {
     /* Adapted from http://bl.ocks.org/zross/47760925fcb1643b4225 */
     var mapTiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
     });
 
     var smallFireIcon = L.icon({
-        iconUrl: 'small-fire.png',
+        iconUrl: './icons/small-fire.png',
         iconSize: [35, 35],
         iconAnchor: [17, 32],
         popupAnchor: [-2.5, -23]
     });
     var mediumFireIcon = L.icon({
-        iconUrl: 'medium-fire.png',
+        iconUrl: './icons/medium-fire.png',
         iconSize: [35, 35],
         iconAnchor: [17, 32],
         popupAnchor: [-2.5, -23]
     });
     var largeFireIcon = L.icon({
-        iconUrl: 'large-fire.png',
+        iconUrl: './icons/large-fire.png',
         iconSize: [35, 35],
         iconAnchor: [17, 32],
         popupAnchor: [-2.5, -23]
     });
-    var containedSmallFireIcon = L.icon({
-        iconUrl: 'small-fire.png',
-        iconSize: [25, 25],
-        iconAnchor: [20, 30],
-        popupAnchor: [-7.5, -22]
-    });
-    var containedMediumFireIcon = L.icon({
-        iconUrl: 'medium-fire.png',
-        iconSize: [25, 25],
-        iconAnchor: [20, 30],
-        popupAnchor: [-7.5, -22]
-    });
-    var containedLargeFireIcon = L.icon({
-        iconUrl: 'large-fire.png',
-        iconSize: [25, 25],
-        iconAnchor: [20, 30],
-        popupAnchor: [-7.5, -22]
-    });
+    // var containedSmallFireIcon = L.icon({
+    //     iconUrl: '../icons/small-fire.png',
+    //     iconSize: [25, 25],
+    //     iconAnchor: [20, 30],
+    //     popupAnchor: [-7.5, -22]
+    // });
+    // var containedMediumFireIcon = L.icon({
+    //     iconUrl: '../icons/medium-fire.png',
+    //     iconSize: [25, 25],
+    //     iconAnchor: [20, 30],
+    //     popupAnchor: [-7.5, -22]
+    // });
+    // var containedLargeFireIcon = L.icon({
+    //     iconUrl: '../icons/large-fire.png',
+    //     iconSize: [25, 25],
+    //     iconAnchor: [20, 30],
+    //     popupAnchor: [-7.5, -22]
+    // });
 
     var map = L.map('map', {
         center: [37.0119, -105.4842],
@@ -242,19 +51,22 @@
         preferCanvas: true
     });
 
-    var promise = $.getJSON("https://opendata.arcgis.com/datasets/9838f79fb30941d2adde6710e9d6b0df_0.geojson");
-
-    //var promise = $.getJSON("https://plus.denverpost.com/api/outputfile.json");
+    //var promise = $.getJSON('https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/Current_WildlandFire_Locations/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson');
+    var promise = $.getJSON('https://raw.githubusercontent.com/githamm/wildfire-data/main/map_data.json');
+    //var promise = $.getJSON('https://services3.arcgis.com/T4QMspbfLg3qTGWY/ArcGIS/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token=');
 
     promise.then(function(data) {
-
         var allWildfires = L.geoJson(data, {
             filter: function(feature, layer) {
-                return feature.properties.PercentContained != 100 && feature.properties.DailyAcres > 1 && feature.properties.IncidentTypeCategory == 'WF';
+                return feature.properties.PercentContained != 100 && feature.properties.IncidentSize > 1 && feature.properties.IncidentTypeCategory == 'WF' || feature.properties.IncidentTypeCategory == 'CX';
             },
             pointToLayer: function(feature, latlng) {
-                var acres = feature.properties.DailyAcres.toLocaleString();
-                var squareMiles = Math.round((feature.properties.DailyAcres / 640) * 10) / 10;
+                var acres;
+                if (feature.properties.IncidentSize != null) {
+                    acres = feature.properties.IncidentSize.toLocaleString()
+                } else feature.properties.IncidentSize = 'Unavailable';
+
+                var squareMiles = Math.round((feature.properties.IncidentSize / 640) * 10) / 10;
                 var percentContained;
 
                 if (feature.properties.PercentContained != null) {
@@ -291,12 +103,12 @@
 
                 var fireIcon;
                 var discoveryDate = moment(feature.properties.FireDiscoveryDateTime).format('LL');
-                var modifiedDate = moment(feature.properties.ModifiedOnDateTime).format('LLL');
+                var modifiedDate = moment(feature.properties.ModifiedOnDateTime_dt).format('LLL');
                 var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '<br><span class="update">Updated ' + modifiedDate + '</span></h3>Acres: <strong>' + acres + '</strong> (' + squareMiles + ' sq. miles)<br>Containment: <strong>' + percentContained + '</strong><br>Cause: <strong>' + feature.properties.FireCause + '</strong><br>Discovered: <strong>' + discoveryDate + '</strong><br>Personnel assigned: <strong>' + personnel + '</strong><br>Fire complexity: <strong>' + complexity + '</strong><br><span style="display:block;margin-top:10px;line-height1.3">The fire is burning ' + landowner + city + ' in ' + feature.properties.POOCounty + ' County.</span><br><span style="display:block;margin-top:-5px;line-height:1.3;text-align:right;font-style:italic"><a href="https://www.google.com/maps?q=loc:' + feature.geometry.coordinates[1] + ',+' + feature.geometry.coordinates[0] + '&t=h" target="blank">Open in Google maps</a></span>';
 
-                if (feature.properties.DailyAcres < 1000) {
+                if (feature.properties.IncidentSize < 1000) {
                     fireIcon = smallFireIcon
-                } else if (feature.properties.DailyAcres < 10000) {
+                } else if (feature.properties.IncidentSize < 10000) {
                     fireIcon = mediumFireIcon
                 } else fireIcon = largeFireIcon;
 
@@ -307,11 +119,11 @@
         });
         var activeWildfires = L.geoJson(data, {
             filter: function(feature, layer) {
-                return feature.properties.PercentContained != 100 && feature.properties.DailyAcres > 100 && feature.properties.IncidentTypeCategory == 'WF';
+                return feature.properties.PercentContained != 100 && feature.properties.IncidentSize > 100 && feature.properties.IncidentTypeCategory == 'WF';
             },
             pointToLayer: function(feature, latlng) {
-                var acres = feature.properties.DailyAcres.toLocaleString();
-                var squareMiles = Math.round((feature.properties.DailyAcres / 640) * 10) / 10;
+                var acres = feature.properties.IncidentSize.toLocaleString();
+                var squareMiles = Math.round((feature.properties.IncidentSize / 640) * 10) / 10;
                 var percentContained;
 
                 if (feature.properties.PercentContained != null) {
@@ -348,12 +160,12 @@
 
                 var fireIcon;
                 var discoveryDate = moment(feature.properties.FireDiscoveryDateTime).format('LL');
-                var modifiedDate = moment(feature.properties.ModifiedOnDateTime).format('LLL');
+                var modifiedDate = moment(feature.properties.ModifiedOnDateTime_dt).format('LLL');
                 var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '<br><span class="update">Updated ' + modifiedDate + '</span></h3>Acres: <strong>' + acres + '</strong> (' + squareMiles + ' sq. miles)<br>Containment: <strong>' + percentContained + '</strong><br>Cause: <strong>' + feature.properties.FireCause + '</strong><br>Discovered: <strong>' + discoveryDate + '</strong><br>Personnel assigned: <strong>' + personnel + '</strong><br>Fire complexity: <strong>' + complexity + '</strong><br><span style="display:block;margin-top:10px;line-height1.3">The fire is burning ' + landowner + city + ' in ' + feature.properties.POOCounty + ' County.</span><br><span style="display:block;margin-top:-5px;line-height:1.3;text-align:right;font-style:italic"><a href="https://www.google.com/maps?q=loc:' + feature.geometry.coordinates[1] + ',+' + feature.geometry.coordinates[0] + '&t=h" target="blank">Open in Google maps</a></span>';
 
-                if (feature.properties.DailyAcres < 1000) {
+                if (feature.properties.IncidentSize < 1000) {
                     fireIcon = smallFireIcon
-                } else if (feature.properties.DailyAcres < 10000) {
+                } else if (feature.properties.IncidentSize < 10000) {
                     fireIcon = mediumFireIcon
                 } else fireIcon = largeFireIcon;
 
@@ -368,8 +180,8 @@
                 return feature.properties.FireMgmtComplexity == 'Type 1 Incident' || feature.properties.FireMgmtComplexity == 'Type 2 Incident';
             },
             pointToLayer: function(feature, latlng) {
-                var acres = feature.properties.DailyAcres.toLocaleString();
-                var squareMiles = Math.round((feature.properties.DailyAcres / 640) * 10) / 10;
+                var acres = feature.properties.IncidentSize.toLocaleString();
+                var squareMiles = Math.round((feature.properties.IncidentSize / 640) * 10) / 10;
                 var percentContained;
 
                 if (feature.properties.PercentContained != null) {
@@ -405,20 +217,20 @@
 
                 var fireIcon;
                 var discoveryDate = moment(feature.properties.FireDiscoveryDateTime).format('LL');
-                var modifiedDate = moment(feature.properties.ModifiedOnDateTime).format('LLL');
+                var modifiedDate = moment(feature.properties.ModifiedOnDateTime_dt).format('LLL');
                 var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '<br><span class="update">Updated ' + modifiedDate + '</span></h3>Acres: <strong>' + acres + '</strong> (' + squareMiles + ' sq. miles)<br>Containment: <strong>' + percentContained + '</strong><br>Cause: <strong>' + feature.properties.FireCause + '</strong><br>Discovered: <strong>' + discoveryDate + '</strong><br>Personnel assigned: <strong>' + personnel + '</strong><br>Fire complexity: <strong>' + complexity + '</strong><br><span style="display:block;margin-top:10px;line-height1.3">The fire is burning ' + landowner + city + ' in ' + feature.properties.POOCounty + ' County.</span><br><span style="display:block;margin-top:-5px;line-height:1.3;text-align:right;font-style:italic"><a href="https://www.google.com/maps?q=loc:' + feature.geometry.coordinates[1] + ',+' + feature.geometry.coordinates[0] + '&t=h" target="blank">Open in Google maps</a></span>';
 
-                if (feature.properties.DailyAcres < 1000) {
+                if (feature.properties.IncidentSize < 1000) {
                     fireIcon = smallFireIcon
-                } else if (feature.properties.DailyAcres < 10000) {
+                } else if (feature.properties.IncidentSize < 10000) {
                     fireIcon = mediumFireIcon
                 } else fireIcon = largeFireIcon;
 
 
                 // if (feature.properties.PercentContained == 100) {
-                //     if (feature.properties.DailyAcres < 1000) {
+                //     if (feature.properties.IncidentSize < 1000) {
                 //         fireIcon = containedSmallFireIcon
-                //     } else if (feature.properties.DailyAcres < 10000) {
+                //     } else if (feature.properties.IncidentSize < 10000) {
                 //         fireIcon = containedMediumFireIcon
                 //     } else fireIcon = containedLargeFireIcon
                 // };
@@ -431,11 +243,11 @@
 
         var circleWildfires = L.geoJson(data, {
             filter: function(feature, layer) {
-                return feature.properties.PercentContained != 100 && feature.properties.DailyAcres > 1 && feature.properties.IncidentTypeCategory == 'WF';
+                return feature.properties.PercentContained != 100 && feature.properties.IncidentSize > 1 && feature.properties.IncidentTypeCategory == 'WF';
             },
             pointToLayer: function(feature, latlng) {
-                var acres = feature.properties.DailyAcres;
-                var squareMiles = Math.round((feature.properties.DailyAcres / 640) * 10) / 10;
+                var acres = feature.properties.IncidentSize;
+                var squareMiles = Math.round((feature.properties.IncidentSize / 640) * 10) / 10;
                 var circleRadius;
                 var circleSize = Math.sqrt(acres) * .15;
                 var activeCircle = {
@@ -481,12 +293,12 @@
 
                 var fireIcon;
                 var discoveryDate = moment(feature.properties.FireDiscoveryDateTime).format('LL');
-                var modifiedDate = moment(feature.properties.ModifiedOnDateTime).format('LLL');
+                var modifiedDate = moment(feature.properties.ModifiedOnDateTime_dt).format('LLL');
                 var popupInfo = '<h3 class="fire-name">' + feature.properties.IncidentName + '<br><span class="update">Updated ' + modifiedDate + '</span></h3>Acres: <strong>' + acres.toLocaleString() + '</strong> (' + squareMiles + ' sq. miles)<br>Containment: <strong>' + percentContained + '</strong><br>Cause: <strong>' + feature.properties.FireCause + '</strong><br>Discovered: <strong>' + discoveryDate + '</strong><br>Personnel assigned: <strong>' + personnel + '</strong><br>Fire complexity: <strong>' + complexity + '</strong><br><span style="display:block;margin-top:10px;line-height1.3">The fire is burning ' + landowner + city + ' in ' + feature.properties.POOCounty + ' County.</span><br><span style="display:block;margin-top:-5px;line-height:1.3;text-align:right;font-style:italic"><a href="https://www.google.com/maps?q=loc:' + feature.geometry.coordinates[1] + ',+' + feature.geometry.coordinates[0] + '&t=h" target="blank">Open in Google maps</a></span>';
 
-                if (feature.properties.DailyAcres < 1000) {
+                if (feature.properties.IncidentSize < 1000) {
                     fireIcon = smallFireIcon
-                } else if (feature.properties.DailyAcres < 10000) {
+                } else if (feature.properties.IncidentSize < 10000) {
                     fireIcon = mediumFireIcon
                 } else fireIcon = largeFireIcon;
 
@@ -530,8 +342,5 @@
             //map.removeLayer(smallWildfires)
             map.removeLayer(allWildfires)
         });
-    });
-    </script>
-</body>
-
-</html>
+    })
+})

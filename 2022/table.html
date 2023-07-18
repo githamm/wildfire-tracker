@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2022 U.S. and Colorado Wildfires | The Denver Post</title>
+    <link rel="icon" href="https://www.denverpost.com/wp-content/uploads/2016/05/cropped-DP_bug_denverpost.jpg?w=32" sizes="32x32" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/vanilla-tabs.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:700|Roboto+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
+    <script src="./js/vanilla-tabs.min.js"></script>
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js" integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <ul id="tabs-h" class="tabs">
+        <li data-title="Map">
+            <h2 class="page-title">2022 U.S. wildfires</h2>
+            <p class="chatter">All active wildfires are shown. Use buttons to filter wildfires; tap markers for details.</p>
+            <div class="legend-types">
+                <p class="legend-title">Markers</p>
+                <ul class="icon-list">
+                    <li class="icon-list-item"><img src="./icons/small-fire.png">
+                        <p class="legend-marker-text">
+                            < 1,000 acres</p> </li> <li class="icon-list-item"><img src="./icons/medium-fire.png">
+                                <p class="legend-marker-text">1,000-10,000 acres</p>
+                    </li>
+                    <li class="icon-list-item"><img src="./icons/large-fire.png">
+                        <p class="legend-marker-text">10,000+ acres</p>
+                    </li>
+                </ul>
+                <p class="legend-title" style="margin-top:5px">Circles</p>
+                <p style="margin:0 0 20px 15px;line-height: 1">Circle size is relative and not indicative of a fire's perimeter</p>
+            </div>
+            <fieldset id="wildfire-map-filter">
+                <legend class="fieldset-title">Filter by fire type</legend>
+                <form>
+                    <label><input type="radio" id="allWildfires" name="wildfires-map-filter" checked>All active wildfires</label><br>
+                    <label><input type="radio" id="activeWildfires" name="wildfires-map-filter">Active wildfires 100+ acres</label><br>
+                    <label><input type="radio" id="circleWildfires" name="wildfires-map-filter">Active wildfires by size</label><br>
+                    <label><input type="radio" id="incidentType1Wildfires" name="wildfires-map-filter">Type 1 & 2 active wildfires</label>
+                </form>
+            </fieldset>
+            <div id="map"></div>
+            <p class="source">Source: <a href="https://data-nifc.opendata.arcgis.com/" target="_blank">National Interagency Fire Center</a> &bull; Map markers from <a href="https://mapicons.mapsmarker.com/" target="_blank">Map Icons Collection</a> / By Kevin Hamm, The Denver Post</p>
+        </li>
+        <li data-title="List">
+            <h2 class="page-title">2022 Colorado wildfires</h2>
+            <p class="chatter">Wildfires 10 acres or larger are shown. Use buttons to filter between all wildfires and <span class="active-fire">active wildfires</span>; tap table headers to sort.</p>
+            <fieldset>
+                <legend class="fieldset-title">Filter by fire type</legend>
+                <form>
+                    <label><input type="radio" id="reset-button" name="wildfires-filter" checked>All wildfires</label>
+                    <label><input type="radio" id="filter-button" name="wildfires-filter">Active wildfires</label>
+                </form>
+            </fieldset>
+            <table id="wildfire-table" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th class="all">Fire name</th>
+                        <th class="all">Discovery date</th>
+                        <th class="all">Acres burned</th>
+                        <th class="all">Containment</th>
+                        <th class="all">Fire cause</th>
+                        <th class="all">County</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <p class="source">Source: <a href="https://data-nifc.opendata.arcgis.com" target="_blank">National Interagency Fire Center</a> / By Kevin Hamm, The Denver Post</p>
+        </li>
+        <li data-title="Chart">
+            <h2 class="page-title">Large 2022 Colorado wildfires</h2>
+            <p class="chatter">Wildfires 1,000 acres or larger are shown. Hover over circles for details.</p>
+            <fieldset>
+                <legend class="fieldset-title">Wildfire cause</legend>
+                <div><span class="legend-circle" id="red" style="margin-left:-5px"></span><span class="legend-text">Human</span><span class="legend-circle" id="green"></span><span class="legend-text">Natural</span><span class="legend-circle" id="blue"></span><span class="legend-text">Undetermined</span></div>
+            </fieldset>
+            <div id="chart-container">
+                <canvas id="container" style="width:100%"></canvas>
+            </div>
+            <p class="source">Source: <a href="https://data-nifc.opendata.arcgis.com" target="_blank">National Interagency Fire Center</a> / By Kevin Hamm, The Denver Post</p>
+        </li>
+    </ul>
+    <script>
+    new VanillaTabs({
+        'selector': '#tabs-h', // default is ".tabs"
+        'type': 'horizontal', // can be horizontal / vertical / accordion
+        'responsiveBreak': 0,
+        /*740*/ // tabs become accordion on this device width
+        'activeIndex': 0 // active tab index (starts from 0 ). Can be -1 for accordions.
+    });
+    </script>
+    <script src="./js/table.js"></script>
+    <script src="./js/chart.js"></script>
+    <script src="./js/map.js"></script>
+</body>
+
+</html>

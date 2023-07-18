@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorado 2022 Wildfire Chart | The Denver Post</title>
+    <link rel="icon" href="https://www.denverpost.com/wp-content/uploads/2016/05/cropped-DP_bug_denverpost.jpg?w=32" sizes="32x32" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+</head>
+
+<body>
+    <h2 class="page-title">Large 2022 Colorado wildfires</h2>
+    <p class="chatter">Only wildfires 1,000 acres or larger are shown. Hover over circles for details.</p>
+    <fieldset id="active-fire-filter">
+        <legend>Wildfire cause</legend>
+        <div><span class="legend-circle" id="red"></span><span class="legend-text">Human</span><span class="legend-circle" id="green"></span><span class="legend-text">Natural</span><span class="legend-circle" id="blue"></span><span class="legend-text">Undetermined</span></div>
+    </fieldset>
+    <div id="chart-container">
+        <canvas id="container" style="width:100%"></canvas>
+    </div>
+    <p class="source">Source: <a href="https://data-nifc.opendata.arcgis.com" target="_blank">National Interagency Fire Center</a> / By Kevin Hamm, The Denver Post</p>
+    <script src="./js/chart.js"></script>
+</body>
+
+</html>
