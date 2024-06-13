@@ -79,7 +79,7 @@ $(document).ready(function() {
 
                 var complexity;
                 if (feature.properties.FireMgmtComplexity != null) {
-                    complexity = feature.properties.FireMgmtComplexity
+                    complexity = feature.properties.IncidentComplexityLevel
                 } else complexity = 'Unavailable';
 
                 var city;
