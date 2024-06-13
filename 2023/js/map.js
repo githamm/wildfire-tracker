@@ -51,8 +51,7 @@ $(document).ready(function() {
         preferCanvas: true
     });
 
-    //var promise = $.getJSON('https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/Current_WildlandFire_Locations/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson');
-    //var promise = $.getJSON('https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=1%3D1&outFields=FireCause,FireDiscoveryDateTime,IncidentName,IncidentTypeCategory,PercentContained,POOCounty,POOLandownerCategory,POOState,TotalIncidentPersonnel,IncidentSize,ModifiedOnDateTime_dt,FireMgmtComplexity,POOCity&outSR=4326&f=geojson');
+    //var promise = $.getJSON('https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=1%3D1&outFields=FireCause,FireDiscoveryDateTime,IncidentName,IncidentTypeCategory,PercentContained,POOCounty,POOLandownerCategory,POOState,TotalIncidentPersonnel,IncidentSize,ModifiedOnDateTime_dt,IncidentComplexityLevel,POOCity&outSR=4326&f=geojson');
     var promise = $.getJSON('https://raw.githubusercontent.com/githamm/wildfire-data/main/map_data.json');
     promise.then(function(data) {
         var allWildfires = L.geoJson(data, {
@@ -78,7 +77,7 @@ $(document).ready(function() {
                 } else personnel = 'Unavailable';
 
                 var complexity;
-                if (feature.properties.FireMgmtComplexity != null) {
+                if (feature.properties.IncidentComplexityLevel != null) {
                     complexity = feature.properties.IncidentComplexityLevel
                 } else complexity = 'Unavailable';
 
@@ -135,8 +134,8 @@ $(document).ready(function() {
                 } else personnel = 'Unavailable';
 
                 var complexity;
-                if (feature.properties.FireMgmtComplexity != null) {
-                    complexity = feature.properties.FireMgmtComplexity
+                if (feature.properties.IncidentComplexityLevel != null) {
+                    complexity = feature.properties.IncidentComplexityLevel
                 } else complexity = 'Unavailable';
 
                 var city;
@@ -176,7 +175,7 @@ $(document).ready(function() {
 
         var incidentType1Wildfires = L.geoJson(data, {
             filter: function(feature, layer) {
-                return feature.properties.FireMgmtComplexity == 'Type 1 Incident' || feature.properties.FireMgmtComplexity == 'Type 2 Incident';
+                return feature.properties.IncidentComplexityLevel == 'Type 1 Incident' || feature.properties.IncidentComplexityLevel == 'Type 2 Incident';
             },
             pointToLayer: function(feature, latlng) {
                 var acres = feature.properties.IncidentSize.toLocaleString();
@@ -193,8 +192,8 @@ $(document).ready(function() {
                 } else personnel = 'Unavailable';
 
                 var complexity;
-                if (feature.properties.FireMgmtComplexity != null) {
-                    complexity = feature.properties.FireMgmtComplexity
+                if (feature.properties.IncidentComplexityLevel != null) {
+                    complexity = feature.properties.IncidentComplexityLevel
                 } else complexity = 'Unavailable';
 
                 var city;
@@ -269,8 +268,8 @@ $(document).ready(function() {
                 } else personnel = 'Unavailable';
 
                 var complexity;
-                if (feature.properties.FireMgmtComplexity != null) {
-                    complexity = feature.properties.FireMgmtComplexity
+                if (feature.properties.IncidentComplexityLevel != null) {
+                    complexity = feature.properties.IncidentComplexityLevel
                 } else complexity = 'Unavailable';
 
                 var city;
