@@ -30,7 +30,14 @@ $(document).ready(function() {
             dom: '<<ift>>',
             order: [1, 'desc'],
             columns: [
-                { data: 'fire_name' },
+                {
+                    data: 'fire_name',
+                    render: function(data, type, row, meta) {
+                        if (data === 'Stone Mtn') {
+                            return 'Stone Canyon'
+                        } else return data
+                    }
+                },
                 {
                     data: 'fire_discovery_date_time',
                     render: function(data) {
@@ -39,7 +46,15 @@ $(document).ready(function() {
                 },
                 { data: 'acres_burned', render: $.fn.dataTable.render.number(',', '.', 0, '') },
                 { data: 'percent_contained', render: $.fn.dataTable.render.number(',', '.', 0, '', '%') },
-                { data: 'fire_cause' },
+                { 
+                    data: 'fire_cause',
+                    // Use for temporary changes
+                    render: function(data, type, row, meta) {
+                        if (row.fire_name === 'Quarry') {
+                            return 'Undetermined'
+                        } else return data
+                    }
+                },
                 { data: 'county' }
             ],
             createdRow: function(row, data, index) {

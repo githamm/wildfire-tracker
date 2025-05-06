@@ -33,6 +33,13 @@ $(document).ready(function() {
             } else bigFires[i].percent_contained = bigFires[i].percent_contained + '%'
         }
 
+        // For temporary changes
+        for (let i = 0; i < bigFires.length; i++) {
+            if (bigFires[i].fire_name === 'Stone Mtn') {
+                bigFires[i].fire_name = 'Stone Canyon'
+            }
+        }
+
         // Map data to chart data model
         var data = bigFires.map(function(row) {
             return {

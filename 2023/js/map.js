@@ -47,7 +47,7 @@ $(document).ready(function() {
         minZoom: 3,
         //dragging: false,
         layers: [mapTiles],
-        scrollWheelZoom: false,
+        scrollWheelZoom: true,
         preferCanvas: true
     });
 
@@ -91,6 +91,14 @@ $(document).ready(function() {
                 // This makes non-agency names lowercase
                 String.prototype.lowercase = function() {
                     return this.charAt(0).toLowerCase() + this.slice(1);
+                };
+
+                // THIS IS FOR TEMPORARY CHANGES TO A FIRE'S PROPERTIES
+                if (feature.properties.IncidentName === 'Stone Mtn') {
+                    feature.properties.IncidentName = 'Stone Canyon'
+                };
+                if (feature.properties.IncidentName === 'Quarry') {
+                    feature.properties.FireCause = 'Undetermined'
                 };
 
                 if (feature.properties.POOLandownerCategory != null) {
@@ -175,7 +183,7 @@ $(document).ready(function() {
 
         var incidentType1Wildfires = L.geoJson(data, {
             filter: function(feature, layer) {
-                return feature.properties.IncidentComplexityLevel == 'Type 1 Incident' || feature.properties.IncidentComplexityLevel == 'Type 2 Incident';
+                return feature.properties.IncidentComplexityLevel == 'Type 1 Incident' && feature.properties.IncidentTypeCategory == 'WF' || feature.properties.IncidentComplexityLevel == 'Type 2 Incident' && feature.properties.IncidentTypeCategory == 'WF';
             },
             pointToLayer: function(feature, latlng) {
                 var acres = feature.properties.IncidentSize.toLocaleString();
