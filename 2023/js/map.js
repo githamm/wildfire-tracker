@@ -52,7 +52,8 @@ $(document).ready(function() {
     });
 
     //var promise = $.getJSON('https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=1%3D1&outFields=FireCause,FireDiscoveryDateTime,IncidentName,IncidentTypeCategory,PercentContained,POOCounty,POOLandownerCategory,POOState,TotalIncidentPersonnel,IncidentSize,ModifiedOnDateTime_dt,IncidentComplexityLevel,POOCity&outSR=4326&f=geojson');
-    var promise = $.getJSON('https://raw.githubusercontent.com/githamm/wildfire-data/main/map_data.json');
+    //var promise = $.getJSON('https://raw.githubusercontent.com/githamm/wildfire-data/main/map_data.json');
+    var promise = $.getJSON('./js/temp_map_data.json');
     promise.then(function(data) {
         var allWildfires = L.geoJson(data, {
             filter: function(feature, layer) {

@@ -45,7 +45,8 @@ $(document).ready(function() {
             return {
                 x: row['fire_discovery_date_time'],
                 y: row['acres_burned'],
-                r: row['acres_burned'] / 500,
+                // r: row['acres_burned'] / 650,
+                r: Math.sqrt(row['acres_burned']) * .15,
                 name: row['fire_name'],
                 contained: row['percent_contained'],
                 cause: row['fire_cause'],
@@ -84,14 +85,14 @@ $(document).ready(function() {
                     xAxes: [{
                         type: 'time',
                         time: {
-                            unit: 'day',
+                            unit: 'week',
                             displayFormats: {
                                 //'millisecond': 'MMM DD',
                                 // 'second': 'MMM DD',
                                 // 'minute': 'MMM DD',
                                 // 'hour': 'MMM DD',
-                                'day': 'MMM DD',
-                                // 'week': 'MMM DD',
+                                // 'day': 'MMM DD',
+                                'week': 'MMM DD',
                                 // 'month': 'MMM DD',
                                 // 'quarter': 'MMM DD',
                                 // 'year': 'MMM DD'
