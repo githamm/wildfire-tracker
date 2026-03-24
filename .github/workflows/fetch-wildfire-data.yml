@@ -20,13 +20,25 @@ jobs:
       - name: Fetch current WF incidents from NIFC
         run: |
           BASE="https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services"
-          FIELDS="IncidentName,IncidentTypeCategory,IncidentSize,PercentContained,POOState,POOCounty,POOCity,FireCause,FireDiscoveryDateTime,ContainmentDateTime,TotalIncidentPersonnel,IncidentComplexityLevel,POOLandownerCategory,UniqueFireIdentifier,OBJECTID"
-          WHERE="IncidentTypeCategory%3D%27WF%27%20AND%20IncidentSize%20%3E%201"
-          ORDER="IncidentSize%20DESC"
+          CURRENT="${BASE}/WFIGS_Incident_Locations_Current/FeatureServer/0/query"
+          YTD="${BASE}/WFIGS_Incident_Locations_YTD/FeatureServer/0/query"
 
-          curl -sf "${BASE}/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=${WHERE}&outFields=${FIELDS}&f=geojson&resultRecordCount=2000&orderByFields=${ORDER}" -o wf_current_raw.json
+          # Build query string in a variable to avoid shell expansion issues
+          PARAMS="where=IncidentTypeCategory+%3D+%27WF%27+AND+IncidentSize+%3E+1"
+          PARAMS="${PARAMS}&outFields=IncidentName%2CIncidentTypeCategory%2CIncidentSize%2CPercentContained%2CPOOState%2CPOOCounty%2CPOOCity%2CFireCause%2CFireDiscoveryDateTime%2CContainmentDateTime%2CTotalIncidentPersonnel%2CIncidentComplexityLevel%2CPOOLandownerCategory%2CUniqueFireIdentifier%2COBJECTID"
+          PARAMS="${PARAMS}&f=geojson&resultRecordCount=2000&orderByFields=IncidentSize+DESC"
 
-          curl -sf "${BASE}/WFIGS_Incident_Locations_YTD/FeatureServer/0/query?where=${WHERE}&outFields=${FIELDS}&f=geojson&resultRecordCount=2000&orderByFields=${ORDER}" -o wf_ytd_raw.json
+          echo "Fetching current incidents..."
+          curl --fail --show-error --location \
+            "${CURRENT}?${PARAMS}" \
+            -o wf_current_raw.json
+          echo "Current: $(python3 -c "import json; d=json.load(open('wf_current_raw.json')); print(len(d.get('features', [])))")" features
+
+          echo "Fetching YTD incidents..."
+          curl --fail --show-error --location \
+            "${YTD}?${PARAMS}" \
+            -o wf_ytd_raw.json
+          echo "YTD: $(python3 -c "import json; d=json.load(open('wf_ytd_raw.json')); print(len(d.get('features', [])))")" features
 
       - name: Wrap with metadata and write final files
         run: |
