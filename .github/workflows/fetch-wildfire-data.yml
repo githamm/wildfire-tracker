@@ -2,10 +2,10 @@ name: Fetch Wildfire Data
 
 on:
   schedule:
-    - cron: '5 * * * *'   # every hour at :05
-  workflow_dispatch:        # manual trigger
+    - cron: '5 * * * *'
+  workflow_dispatch:
   push:
-    branches: [main]        # seed on first deploy
+    branches: [main]
 
 jobs:
   fetch:
@@ -21,22 +21,12 @@ jobs:
         run: |
           BASE="https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services"
           FIELDS="IncidentName,IncidentTypeCategory,IncidentSize,PercentContained,POOState,POOCounty,POOCity,FireCause,FireDiscoveryDateTime,ContainmentDateTime,TotalIncidentPersonnel,IncidentComplexityLevel,POOLandownerCategory,UniqueFireIdentifier,OBJECTID"
+          WHERE="IncidentTypeCategory%3D%27WF%27%20AND%20IncidentSize%20%3E%201"
+          ORDER="IncidentSize%20DESC"
 
-          # Current active incidents
-          curl -sf \
-            "${BASE}/WFIGS_Incident_Locations_Current/FeatureServer/0/query?\
-where=IncidentTypeCategory%3D%27WF%27%20AND%20IncidentSize%20%3E%201\
-&outFields=${FIELDS}&f=geojson&resultRecordCount=2000\
-&orderByFields=IncidentSize%20DESC" \
-            -o wf_current_raw.json
+          curl -sf "${BASE}/WFIGS_Incident_Locations_Current/FeatureServer/0/query?where=${WHERE}&outFields=${FIELDS}&f=geojson&resultRecordCount=2000&orderByFields=${ORDER}" -o wf_current_raw.json
 
-          # Year-to-date incidents
-          curl -sf \
-            "${BASE}/WFIGS_Incident_Locations_YTD/FeatureServer/0/query?\
-where=IncidentTypeCategory%3D%27WF%27%20AND%20IncidentSize%20%3E%201\
-&outFields=${FIELDS}&f=geojson&resultRecordCount=2000\
-&orderByFields=IncidentSize%20DESC" \
-            -o wf_ytd_raw.json
+          curl -sf "${BASE}/WFIGS_Incident_Locations_YTD/FeatureServer/0/query?where=${WHERE}&outFields=${FIELDS}&f=geojson&resultRecordCount=2000&orderByFields=${ORDER}" -o wf_ytd_raw.json
 
       - name: Wrap with metadata and write final files
         run: |
@@ -44,9 +34,8 @@ where=IncidentTypeCategory%3D%27WF%27%20AND%20IncidentSize%20%3E%201\
           import json
           from datetime import datetime, timezone
 
-          now     = datetime.now(timezone.utc)
-          now_iso = now.isoformat()
-          now_ts  = int(now.timestamp() * 1000)
+          now_iso = datetime.now(timezone.utc).isoformat()
+          now_ms  = int(datetime.now(timezone.utc).timestamp() * 1000)
 
           def process(path, label):
               with open(path) as f:
@@ -57,7 +46,7 @@ where=IncidentTypeCategory%3D%27WF%27%20AND%20IncidentSize%20%3E%201\
                   'type': 'FeatureCollection',
                   'meta': {
                       'fetched_at':    now_iso,
-                      'fetched_at_ms': now_ts,
+                      'fetched_at_ms': now_ms,
                       'count':         len(features),
                       'source':        'NIFC WFIGS ArcGIS REST API',
                       'filter':        "IncidentTypeCategory='WF' AND IncidentSize > 1",
@@ -79,7 +68,7 @@ where=IncidentTypeCategory%3D%27WF%27%20AND%20IncidentSize%20%3E%201\
 
       - name: Commit if data changed
         run: |
-          git config user.name  "github-actions[bot]"
+          git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add wf_current.json wf_ytd.json
           if git diff --cached --quiet; then
