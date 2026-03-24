@@ -26,25 +26,22 @@ jobs:
           import urllib.request, urllib.parse, json, sys, time
           from datetime import datetime, timezone
 
-          BASE   = "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services"
-          # ModifiedOnDateTime added so dashboard can compute stale=contained logic
+          BASE = "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services"
+
+          # All fields needed by the dashboard
           FIELDS = ",".join([
-              "IncidentName","IncidentTypeCategory","IncidentSize",
-              "PercentContained","POOState","POOCounty","POOCity",
-              "FireCause","FireDiscoveryDateTime","ContainmentDateTime",
-              "ModifiedOnDateTime","TotalIncidentPersonnel",
-              "IncidentComplexityLevel","POOLandownerCategory",
-              "UniqueFireIdentifier","OBJECTID",
+              "IncidentName", "IncidentTypeCategory", "IncidentSize",
+              "PercentContained", "POOState", "POOCounty", "POOCity",
+              "FireCause", "FireDiscoveryDateTime", "ContainmentDateTime",
+              "FireOutDateTime", "ModifiedOnDateTime_dt",
+              "TotalIncidentPersonnel", "IncidentComplexityLevel",
+              "POOLandownerCategory", "UniqueFireIdentifier", "OBJECTID",
           ])
 
-          YTD_CANDIDATES = [
-              "WFIGS_Incident_Locations_YTD",
-              "WFIGS_Incident_Locations_2026_YTD",
-              "Wildland_Fire_Incident_Locations_YTD",
-              "WFIGS_2026_Wildfire_Locations",
-              "WFIGS_Incident_Locations_YearToDate",
-              "WildlandFire_Locations_YTD",
-          ]
+          LAYERS = {
+              "current": f"{BASE}/WFIGS_Incident_Locations_Current/FeatureServer/0",
+              "ytd":     f"{BASE}/WFIGS_Incident_Locations_YearToDate/FeatureServer/0",
+          }
 
           def fetch_page(layer_url, offset, page_size=1000):
               params = urllib.parse.urlencode({
@@ -79,53 +76,21 @@ jobs:
                   time.sleep(0.3)
               return all_features
 
-          def probe_layer(name):
-              url = f"{BASE}/{name}/FeatureServer/0"
-              params = urllib.parse.urlencode({
-                  "where": "1=1", "outFields": "OBJECTID",
-                  "f": "json", "resultRecordCount": "1",
-              })
-              req = urllib.request.Request(
-                  f"{url}/query?{params}",
-                  headers={"User-Agent": "WildfireMonitor/1.0"}
-              )
-              try:
-                  with urllib.request.urlopen(req, timeout=8) as r:
-                      d = json.loads(r.read())
-                  if "error" not in d:
-                      return url
-              except Exception:
-                  pass
-              return None
-
           now_iso = datetime.now(timezone.utc).isoformat()
           now_ms  = int(datetime.now(timezone.utc).timestamp() * 1000)
 
-          CURRENT_LAYER = f"{BASE}/WFIGS_Incident_Locations_Current/FeatureServer/0"
-          print("Fetching current incidents...")
-          current_features = fetch_all(CURRENT_LAYER, "Current")
-          print(f"Current: {len(current_features)} features\n")
+          results = {}
+          for key, url in LAYERS.items():
+              print(f"\nFetching {key} layer...")
+              try:
+                  features = fetch_all(url, key)
+                  results[key] = features
+                  print(f"{key}: {len(features)} total features")
+              except Exception as e:
+                  print(f"ERROR fetching {key}: {e}", file=sys.stderr)
+                  results[key] = []
 
-          print("Probing YTD service name...")
-          ytd_layer = None
-          for name in YTD_CANDIDATES:
-              print(f"  Trying {name}...", end=" ", flush=True)
-              found = probe_layer(name)
-              if found:
-                  print("OK")
-                  ytd_layer = found
-                  break
-              print("not found")
-
-          if ytd_layer:
-              print(f"\nFetching YTD incidents from {ytd_layer}...")
-              ytd_features = fetch_all(ytd_layer, "YTD")
-              print(f"YTD: {len(ytd_features)} features\n")
-          else:
-              print("WARNING: YTD layer not found, falling back to current only")
-              ytd_features = current_features
-
-          def write_geojson(features, path, layer_name):
+          for key, features in results.items():
               out = {
                   "type": "FeatureCollection",
                   "meta": {
@@ -133,19 +98,15 @@ jobs:
                       "fetched_at_ms": now_ms,
                       "count":         len(features),
                       "source":        "NIFC WFIGS ArcGIS REST API",
-                      "layer":         layer_name,
                       "filter":        "IncidentTypeCategory='WF' AND IncidentSize >= 10",
                   },
                   "features": features,
               }
+              path = f"wf_{key}.json"
               with open(path, "w") as f:
                   json.dump(out, f, separators=(",", ":"))
-              print(f"Wrote {path} ({len(features)} features)")
+              print(f"Wrote {path}")
 
-          write_geojson(current_features, "wf_current.json",
-                        "WFIGS_Incident_Locations_Current")
-          write_geojson(ytd_features, "wf_ytd.json",
-                        ytd_layer or "fallback_current")
           print("\nDone.")
           PYEOF
 
