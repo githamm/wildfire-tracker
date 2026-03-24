@@ -27,16 +27,16 @@ jobs:
           from datetime import datetime, timezone
 
           BASE   = "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services"
+          # ModifiedOnDateTime added so dashboard can compute stale=contained logic
           FIELDS = ",".join([
               "IncidentName","IncidentTypeCategory","IncidentSize",
               "PercentContained","POOState","POOCounty","POOCity",
               "FireCause","FireDiscoveryDateTime","ContainmentDateTime",
-              "TotalIncidentPersonnel","IncidentComplexityLevel",
-              "POOLandownerCategory","UniqueFireIdentifier","OBJECTID",
+              "ModifiedOnDateTime","TotalIncidentPersonnel",
+              "IncidentComplexityLevel","POOLandownerCategory",
+              "UniqueFireIdentifier","OBJECTID",
           ])
 
-          # The YTD dataset item ID is 405814902c9e411cb4384c49d694e82b.
-          # Try known candidate service names; the runner can reach these unlike the build env.
           YTD_CANDIDATES = [
               "WFIGS_Incident_Locations_YTD",
               "WFIGS_Incident_Locations_2026_YTD",
@@ -48,7 +48,7 @@ jobs:
 
           def fetch_page(layer_url, offset, page_size=1000):
               params = urllib.parse.urlencode({
-                  "where":             "IncidentTypeCategory = 'WF' AND IncidentSize > 1",
+                  "where":             "IncidentTypeCategory = 'WF' AND IncidentSize >= 10",
                   "outFields":         FIELDS,
                   "f":                 "geojson",
                   "resultRecordCount": str(page_size),
@@ -82,11 +82,13 @@ jobs:
           def probe_layer(name):
               url = f"{BASE}/{name}/FeatureServer/0"
               params = urllib.parse.urlencode({
-                  "where": "1=1", "outFields": "OBJECTID", "f": "json",
-                  "resultRecordCount": "1",
+                  "where": "1=1", "outFields": "OBJECTID",
+                  "f": "json", "resultRecordCount": "1",
               })
-              req = urllib.request.Request(f"{url}/query?{params}",
-                                           headers={"User-Agent": "WildfireMonitor/1.0"})
+              req = urllib.request.Request(
+                  f"{url}/query?{params}",
+                  headers={"User-Agent": "WildfireMonitor/1.0"}
+              )
               try:
                   with urllib.request.urlopen(req, timeout=8) as r:
                       d = json.loads(r.read())
@@ -99,13 +101,11 @@ jobs:
           now_iso = datetime.now(timezone.utc).isoformat()
           now_ms  = int(datetime.now(timezone.utc).timestamp() * 1000)
 
-          # --- Current layer (known good) ---
           CURRENT_LAYER = f"{BASE}/WFIGS_Incident_Locations_Current/FeatureServer/0"
           print("Fetching current incidents...")
           current_features = fetch_all(CURRENT_LAYER, "Current")
           print(f"Current: {len(current_features)} features\n")
 
-          # --- YTD layer: probe candidates then fetch ---
           print("Probing YTD service name...")
           ytd_layer = None
           for name in YTD_CANDIDATES:
@@ -134,7 +134,7 @@ jobs:
                       "count":         len(features),
                       "source":        "NIFC WFIGS ArcGIS REST API",
                       "layer":         layer_name,
-                      "filter":        "IncidentTypeCategory='WF' AND IncidentSize > 1",
+                      "filter":        "IncidentTypeCategory='WF' AND IncidentSize >= 10",
                   },
                   "features": features,
               }
@@ -142,8 +142,10 @@ jobs:
                   json.dump(out, f, separators=(",", ":"))
               print(f"Wrote {path} ({len(features)} features)")
 
-          write_geojson(current_features, "wf_current.json", "WFIGS_Incident_Locations_Current")
-          write_geojson(ytd_features,     "wf_ytd.json",     ytd_layer or "fallback_current")
+          write_geojson(current_features, "wf_current.json",
+                        "WFIGS_Incident_Locations_Current")
+          write_geojson(ytd_features, "wf_ytd.json",
+                        ytd_layer or "fallback_current")
           print("\nDone.")
           PYEOF
 
