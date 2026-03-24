@@ -27,7 +27,6 @@ jobs:
           from datetime import datetime, timezone
 
           BASE   = "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services"
-          LAYER  = f"{BASE}/WFIGS_Incident_Locations_Current/FeatureServer/0"
           FIELDS = ",".join([
               "IncidentName","IncidentTypeCategory","IncidentSize",
               "PercentContained","POOState","POOCounty","POOCity",
@@ -36,7 +35,18 @@ jobs:
               "POOLandownerCategory","UniqueFireIdentifier","OBJECTID",
           ])
 
-          def fetch_page(offset, page_size=1000):
+          # The YTD dataset item ID is 405814902c9e411cb4384c49d694e82b.
+          # Try known candidate service names; the runner can reach these unlike the build env.
+          YTD_CANDIDATES = [
+              "WFIGS_Incident_Locations_YTD",
+              "WFIGS_Incident_Locations_2026_YTD",
+              "Wildland_Fire_Incident_Locations_YTD",
+              "WFIGS_2026_Wildfire_Locations",
+              "WFIGS_Incident_Locations_YearToDate",
+              "WildlandFire_Locations_YTD",
+          ]
+
+          def fetch_page(layer_url, offset, page_size=1000):
               params = urllib.parse.urlencode({
                   "where":             "IncidentTypeCategory = 'WF' AND IncidentSize > 1",
                   "outFields":         FIELDS,
@@ -45,7 +55,7 @@ jobs:
                   "resultOffset":      str(offset),
                   "orderByFields":     "IncidentSize DESC",
               })
-              url = f"{LAYER}/query?{params}"
+              url = f"{layer_url}/query?{params}"
               req = urllib.request.Request(url, headers={"User-Agent": "WildfireMonitor/1.0"})
               with urllib.request.urlopen(req, timeout=30) as r:
                   data = json.loads(r.read())
@@ -55,49 +65,97 @@ jobs:
               exceeded = data.get("properties", {}).get("exceededTransferLimit", False)
               return feats, exceeded
 
-          all_features = []
-          offset = 0
-          page   = 1
-          while True:
-              print(f"Page {page} (offset {offset})...", flush=True)
-              feats, exceeded = fetch_page(offset)
-              all_features.extend(feats)
-              print(f"  -> {len(feats)} features (running total: {len(all_features)})")
-              if not feats or not exceeded:
+          def fetch_all(layer_url, label):
+              all_features, offset, page = [], 0, 1
+              while True:
+                  print(f"  [{label}] Page {page} (offset {offset})...", flush=True)
+                  feats, exceeded = fetch_page(layer_url, offset)
+                  all_features.extend(feats)
+                  print(f"    -> {len(feats)} features (total: {len(all_features)})")
+                  if not feats or not exceeded:
+                      break
+                  offset += len(feats)
+                  page   += 1
+                  time.sleep(0.3)
+              return all_features
+
+          def probe_layer(name):
+              url = f"{BASE}/{name}/FeatureServer/0"
+              params = urllib.parse.urlencode({
+                  "where": "1=1", "outFields": "OBJECTID", "f": "json",
+                  "resultRecordCount": "1",
+              })
+              req = urllib.request.Request(f"{url}/query?{params}",
+                                           headers={"User-Agent": "WildfireMonitor/1.0"})
+              try:
+                  with urllib.request.urlopen(req, timeout=8) as r:
+                      d = json.loads(r.read())
+                  if "error" not in d:
+                      return url
+              except Exception:
+                  pass
+              return None
+
+          now_iso = datetime.now(timezone.utc).isoformat()
+          now_ms  = int(datetime.now(timezone.utc).timestamp() * 1000)
+
+          # --- Current layer (known good) ---
+          CURRENT_LAYER = f"{BASE}/WFIGS_Incident_Locations_Current/FeatureServer/0"
+          print("Fetching current incidents...")
+          current_features = fetch_all(CURRENT_LAYER, "Current")
+          print(f"Current: {len(current_features)} features\n")
+
+          # --- YTD layer: probe candidates then fetch ---
+          print("Probing YTD service name...")
+          ytd_layer = None
+          for name in YTD_CANDIDATES:
+              print(f"  Trying {name}...", end=" ", flush=True)
+              found = probe_layer(name)
+              if found:
+                  print("OK")
+                  ytd_layer = found
                   break
-              offset += len(feats)
-              page   += 1
-              time.sleep(0.3)
+              print("not found")
 
-          print(f"\nFetched {len(all_features)} total WF incidents")
+          if ytd_layer:
+              print(f"\nFetching YTD incidents from {ytd_layer}...")
+              ytd_features = fetch_all(ytd_layer, "YTD")
+              print(f"YTD: {len(ytd_features)} features\n")
+          else:
+              print("WARNING: YTD layer not found, falling back to current only")
+              ytd_features = current_features
 
-          out = {
-              "type": "FeatureCollection",
-              "meta": {
-                  "fetched_at":    datetime.now(timezone.utc).isoformat(),
-                  "fetched_at_ms": int(datetime.now(timezone.utc).timestamp() * 1000),
-                  "count":         len(all_features),
-                  "source":        "NIFC WFIGS ArcGIS REST API",
-                  "layer":         "WFIGS_Incident_Locations_Current",
-                  "filter":        "IncidentTypeCategory='WF' AND IncidentSize > 1",
-              },
-              "features": all_features,
-          }
+          def write_geojson(features, path, layer_name):
+              out = {
+                  "type": "FeatureCollection",
+                  "meta": {
+                      "fetched_at":    now_iso,
+                      "fetched_at_ms": now_ms,
+                      "count":         len(features),
+                      "source":        "NIFC WFIGS ArcGIS REST API",
+                      "layer":         layer_name,
+                      "filter":        "IncidentTypeCategory='WF' AND IncidentSize > 1",
+                  },
+                  "features": features,
+              }
+              with open(path, "w") as f:
+                  json.dump(out, f, separators=(",", ":"))
+              print(f"Wrote {path} ({len(features)} features)")
 
-          with open("wf_current.json", "w") as f:
-              json.dump(out, f, separators=(",", ":"))
-          print("Wrote wf_current.json")
+          write_geojson(current_features, "wf_current.json", "WFIGS_Incident_Locations_Current")
+          write_geojson(ytd_features,     "wf_ytd.json",     ytd_layer or "fallback_current")
+          print("\nDone.")
           PYEOF
 
       - name: Commit if data changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add wf_current.json
+          git add wf_current.json wf_ytd.json
           if git diff --cached --quiet; then
             echo "No changes — skipping commit."
           else
             COUNT=$(python3 -c "import json; print(json.load(open('wf_current.json'))['meta']['count'])")
-            git commit -m "data: ${COUNT} WF incidents [$(date -u +'%Y-%m-%d %H:%M UTC')]"
+            git commit -m "data: ${COUNT} current WF incidents [$(date -u +'%Y-%m-%d %H:%M UTC')]"
             git push
           fi
