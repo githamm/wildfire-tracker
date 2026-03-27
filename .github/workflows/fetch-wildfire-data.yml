@@ -2,13 +2,8 @@ name: Fetch Wildfire Data
 
 on:
   schedule:
-    - cron: '5 * * * *'
-  workflow_dispatch:
-  push:
-    branches: [main]
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    - cron: '0 * * * *'   # every hour on the hour
+  workflow_dispatch:        # allow manual trigger
 
 jobs:
   fetch:
@@ -18,107 +13,17 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
-      - name: Fetch all WF incidents from NIFC (paginated)
+      - name: Download WFIGS YTD CSV
         run: |
-          python3 - << 'PYEOF'
-          import urllib.request, urllib.parse, json, sys, time
-          from datetime import datetime, timezone
+          curl -L \
+            "https://opendata.arcgis.com/api/v3/datasets/405814902c9e411cb4384c49d694e82b_0/downloads/data?format=csv&spatialRefId=4326&where=1=1" \
+            -o data/wildfire_ytd.csv
 
-          BASE = "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services"
-
-          # All fields needed by the dashboard
-          FIELDS = ",".join([
-              "IncidentName", "IncidentTypeCategory", "IncidentSize",
-              "PercentContained", "POOState", "POOCounty", "POOCity",
-              "FireCause", "FireDiscoveryDateTime", "ContainmentDateTime",
-              "FireOutDateTime", "ModifiedOnDateTime_dt",
-              "TotalIncidentPersonnel", "IncidentComplexityLevel",
-              "POOLandownerCategory", "UniqueFireIdentifier", "OBJECTID",
-          ])
-
-          LAYERS = {
-              "current": f"{BASE}/WFIGS_Incident_Locations_Current/FeatureServer/0",
-              "ytd":     f"{BASE}/WFIGS_Incident_Locations_YearToDate/FeatureServer/0",
-          }
-
-          def fetch_page(layer_url, offset, page_size=1000):
-              params = urllib.parse.urlencode({
-                  "where":             "IncidentTypeCategory = 'WF' AND IncidentSize >= 10",
-                  "outFields":         FIELDS,
-                  "f":                 "geojson",
-                  "resultRecordCount": str(page_size),
-                  "resultOffset":      str(offset),
-                  "orderByFields":     "IncidentSize DESC",
-              })
-              url = f"{layer_url}/query?{params}"
-              req = urllib.request.Request(url, headers={"User-Agent": "WildfireMonitor/1.0"})
-              with urllib.request.urlopen(req, timeout=30) as r:
-                  data = json.loads(r.read())
-              if "error" in data:
-                  raise Exception(f"API error: {data['error']}")
-              feats    = data.get("features", [])
-              exceeded = data.get("properties", {}).get("exceededTransferLimit", False)
-              return feats, exceeded
-
-          def fetch_all(layer_url, label):
-              all_features, offset, page = [], 0, 1
-              while True:
-                  print(f"  [{label}] Page {page} (offset {offset})...", flush=True)
-                  feats, exceeded = fetch_page(layer_url, offset)
-                  all_features.extend(feats)
-                  print(f"    -> {len(feats)} features (total: {len(all_features)})")
-                  if not feats or not exceeded:
-                      break
-                  offset += len(feats)
-                  page   += 1
-                  time.sleep(0.3)
-              return all_features
-
-          now_iso = datetime.now(timezone.utc).isoformat()
-          now_ms  = int(datetime.now(timezone.utc).timestamp() * 1000)
-
-          results = {}
-          for key, url in LAYERS.items():
-              print(f"\nFetching {key} layer...")
-              try:
-                  features = fetch_all(url, key)
-                  results[key] = features
-                  print(f"{key}: {len(features)} total features")
-              except Exception as e:
-                  print(f"ERROR fetching {key}: {e}", file=sys.stderr)
-                  results[key] = []
-
-          for key, features in results.items():
-              out = {
-                  "type": "FeatureCollection",
-                  "meta": {
-                      "fetched_at":    now_iso,
-                      "fetched_at_ms": now_ms,
-                      "count":         len(features),
-                      "source":        "NIFC WFIGS ArcGIS REST API",
-                      "filter":        "IncidentTypeCategory='WF' AND IncidentSize >= 10",
-                  },
-                  "features": features,
-              }
-              path = f"wf_{key}.json"
-              with open(path, "w") as f:
-                  json.dump(out, f, separators=(",", ":"))
-              print(f"Wrote {path}")
-
-          print("\nDone.")
-          PYEOF
-
-      - name: Commit if data changed
+      - name: Commit and push if changed
         run: |
-          git config user.name "github-actions[bot]"
+          git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add wf_current.json wf_ytd.json
-          if git diff --cached --quiet; then
-            echo "No changes — skipping commit."
-          else
-            COUNT=$(python3 -c "import json; print(json.load(open('wf_current.json'))['meta']['count'])")
-            git commit -m "data: ${COUNT} current WF incidents [$(date -u +'%Y-%m-%d %H:%M UTC')]"
-            git push
-          fi
+          git add data/wildfire_ytd.csv
+          git diff --staged --quiet || git commit -m "chore: update wildfire data $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
