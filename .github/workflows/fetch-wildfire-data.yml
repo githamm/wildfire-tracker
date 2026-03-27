@@ -1,24 +1,4 @@
-name: Fetch Wildfire Data
-
-on:
-  schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
-
-jobs:
-  fetch:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Create data directory
-        run: mkdir -p data
-
-      - name: Download WFIGS YTD data
+- name: Download WFIGS YTD data
         run: |
           python3 << 'EOF'
           import urllib.request
@@ -32,7 +12,7 @@ jobs:
 
           while True:
               url = (
-                  f"{BASE}?where=1%3D1"
+                  f"{BASE}?where=IncidentTypeCategory%3D%27WF%27+AND+IncidentSize+%3E%3D+10"
                   f"&outFields=*"
                   f"&returnGeometry=true"
                   f"&f=json"
@@ -76,11 +56,3 @@ jobs:
 
           print("CSV written successfully")
           EOF
-
-      - name: Commit and push if changed
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/wildfire_ytd.csv
-          git diff --staged --quiet || git commit -m "chore: update wildfire data $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          git push
