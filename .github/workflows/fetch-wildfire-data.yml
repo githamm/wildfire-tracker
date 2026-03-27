@@ -2,8 +2,8 @@ name: Fetch Wildfire Data
 
 on:
   schedule:
-    - cron: '0 * * * *'   # every hour on the hour
-  workflow_dispatch:        # allow manual trigger
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   fetch:
@@ -14,6 +14,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Create data directory
+        run: mkdir -p data
 
       - name: Download WFIGS YTD CSV
         run: |
@@ -27,3 +30,4 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/wildfire_ytd.csv
           git diff --staged --quiet || git commit -m "chore: update wildfire data $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          git push
