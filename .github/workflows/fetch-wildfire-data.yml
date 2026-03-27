@@ -18,15 +18,51 @@ jobs:
       - name: Create data directory
         run: mkdir -p data
 
-      - name: Download WFIGS YTD data
+      - name: Write fetch script
         run: |
-          ls -la
-          ls -la scripts/ || echo "scripts/ dir not found"
-          python3 scripts/fetch_wildfire.py
+          cat > /tmp/fetch.py << 'PYEOF'
+          import urllib.request, json, csv
+          BASE = "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Incident_Locations_YearToDate/FeatureServer/0/query"
+          all_features = []
+          offset = 0
+          while True:
+              url = BASE + "?where=IncidentTypeCategory%3D%27WF%27+AND+IncidentSize+%3E%3D+10&outFields=*&returnGeometry=true&f=json&resultRecordCount=2000&resultOffset=" + str(offset)
+              print("Fetching offset", offset)
+              with urllib.request.urlopen(url, timeout=60) as r:
+                  data = json.loads(r.read())
+              if "error" in data:
+                  raise SystemExit("API error: " + str(data["error"]))
+              features = data.get("features", [])
+              if not features:
+                  break
+              all_features.extend(features)
+              offset += len(features)
+              print("Total so far:", len(all_features))
+              if not data.get("exceededTransferLimit", False):
+                  break
+          print("Total features:", len(all_features))
+          if not all_features:
+              raise SystemExit("No features returned")
+          fields = list(all_features[0]["attributes"].keys()) + ["x", "y"]
+          with open("data/wildfire_ytd.csv", "w", newline="", encoding="utf-8") as f:
+              w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
+              w.writeheader()
+              for feat in all_features:
+                  row = dict(feat["attributes"])
+                  geom = feat.get("geometry") or {}
+                  row["x"] = geom.get("x")
+                  row["y"] = geom.get("y")
+                  w.writerow(row)
+          print("Done")
+          PYEOF
+
+      - name: Run fetch script
+        run: python3 /tmp/fetch.py
 
       - name: Commit and push if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/wildfire_ytd.csv
-          git diff --staged --quiet || git comm
+          git diff --staged --quiet || git commit -m "chore: update wildfire data $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          git push
