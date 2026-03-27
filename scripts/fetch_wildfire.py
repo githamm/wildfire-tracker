@@ -1,4 +1,3 @@
-
 import urllib.request
 import json
 import csv
@@ -53,15 +52,4 @@ with open("data/wildfire_ytd.csv", "w", newline="", encoding="utf-8") as f:
         row["y"] = geom.get("y")
         w.writerow(row)
 
-print("CSV written successfully")
-```
-
-So your repo structure would be:
-```
-.github/
-  workflows/
-    fetch-wildfire-data.yml
-scripts/
-  fetch_wildfire.py
-data/
-  wildfire_ytd.csv
+print("CSV wr
