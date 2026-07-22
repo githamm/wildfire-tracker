@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildfire Tracker | The Denver Post</title>
+    <link rel="icon" href="https://www.denverpost.com/wp-content/uploads/2016/05/cropped-DP_bug_denverpost.jpg?w=32" sizes="32x32" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="https://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js" integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-eyebrow">The Denver Post</div>
+        <div class="header-title">Wildfire Tracker</div>
+        <div class="header-byline">
+            <span class="header-byline-timestamp" id="header-timestamp"></span>
+            <span class="header-byline-source">Source: National Interagency Fire Center</span>
+            <span class="header-byline-credit">Kevin Hamm / The Denver Post</span>
+        </div>
+    </div>
+    <ul id="tabs-h" class="tabs">
+        <li data-title="Map">
+            <h2 class="page-title">U.S. wildfires</h2>
+            <p class="chatter">All active wildfires are shown. Use buttons to filter wildfires; tap markers for details. Data is automatically updated by government agencies and could lag real-time events. Incident types are numbered 1-5 &mdash; a type 1 incident is a large, complex wildfire affecting people and critical infrastructure, a type 5 incident is a small wildfire with few personnel involved.</p>
+            <div class="fieldset-box">
+                <p class="fieldset-title">Filter by fire type</p>
+                <div class="filter-toggle" id="wildfire-filter-toggle">
+                    <button type="button" class="filter-toggle-btn active" data-filter="all">All active</button>
+                    <button type="button" class="filter-toggle-btn" data-filter="active">25K+ acres</button>
+                    <button type="button" class="filter-toggle-btn" data-filter="type1">Type 1 &amp; 2</button>
+                </div>
+
+                <p class="fieldset-title" style="margin-top:16px">Map key</p>
+                <div class="map-legend">
+                    <div class="map-legend-group">
+                        <p class="map-legend-group-title">Size (acres)</p>
+                        <div class="size-scale" id="marker-size-legend"></div>
+                    </div>
+                    <div class="map-legend-group">
+                        <p class="map-legend-group-title">Containment</p>
+                        <ul class="icon-list" id="marker-status-legend"></ul>
+                    </div>
+                </div>
+            </div>
+            <div id="map"></div>
+        </li>
+        <li data-title="Perimeters">
+            <h2 class="page-title">Colorado wildfire perimeter history</h2>
+            <p class="chatter">Pick a fire to see how its mapped perimeter has grown day by day, including fires that have since been contained or gone out. Not every fire has a mapped perimeter, and history is only available from the point tracking began &mdash; growth from before that won't be shown.</p>
+            <fieldset class="fieldset-box perimeter-picker-box">
+                <legend class="fieldset-title">Select a fire</legend>
+                <select id="perimeter-fire-select">
+                    <option value="">Loading fires&hellip;</option>
+                </select>
+                <div id="perimeter-info-card" class="perimeter-info-card"></div>
+            </fieldset>
+            <div class="perimeter-controls">
+                <div class="perimeter-stats">
+                    <span id="perimeter-date">&mdash;</span>
+                </div>
+                <div class="perimeter-slider-row">
+                    <button type="button" id="perimeter-play" aria-label="Play growth animation" disabled>&#9654;</button>
+                    <input type="range" id="perimeter-slider" min="0" max="0" value="0" step="1" disabled>
+                </div>
+            </div>
+            <div id="perimeter-map"></div>
+        </li>
+        <li data-title="List">
+            <h2 class="page-title">Colorado wildfires</h2>
+            <p class="chatter">Wildfires 10 acres or larger are shown. Use buttons to filter between all wildfires and active wildfires; click any column header to sort (click again to reverse order).</p>
+            <div class="fieldset-box">
+                <p class="fieldset-title">Filter by fire type</p>
+                <div class="filter-toggle" id="wildfire-table-filter-toggle">
+                    <button type="button" class="filter-toggle-btn active" data-filter="all">All wildfires</button>
+                    <button type="button" class="filter-toggle-btn" data-filter="active">Active wildfires</button>
+                </div>
+                <ul class="icon-list" style="margin-top:10px">
+                    <li class="icon-list-item"><span class="table-status-dot table-status-dot--active" aria-hidden="true"></span><p class="legend-marker-text">Active fire</p></li>
+                </ul>
+            </div>
+            <div class="table-scroll">
+                <table id="wildfire-table">
+                    <thead>
+                        <tr>
+                            <th data-key="fire_name">Fire name</th>
+                            <th data-key="fire_discovery_date_time">Discovery date</th>
+                            <th data-key="acres_burned">Acres burned</th>
+                            <th data-key="percent_contained">Containment</th>
+                            <th data-key="fire_cause">Fire cause</th>
+                            <th data-key="county">County</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </li>
+        <li data-title="Chart">
+            <h2 class="page-title">Large Colorado wildfires</h2>
+            <p class="chatter">Wildfires 1,000 acres or larger are shown. Hover over circles for details. Circle size corresponds to acres burned.</p>
+            <div class="fieldset-box">
+                <p class="fieldset-title">Wildfire cause</p>
+                <ul class="icon-list chart-cause-legend">
+                    <li class="icon-list-item"><span class="chart-legend-dot" id="red"></span><p class="legend-marker-text">Human</p></li>
+                    <li class="icon-list-item"><span class="chart-legend-dot" id="green"></span><p class="legend-marker-text">Natural</p></li>
+                    <li class="icon-list-item"><span class="chart-legend-dot" id="blue"></span><p class="legend-marker-text">Undetermined</p></li>
+                </ul>
+            </div>
+            <div id="chart-container">
+                <canvas id="container" style="width:100%"></canvas>
+            </div>
+        </li>
+    </ul>
+    <script src="./js/tabs.js"></script>
+    <script src="./js/fire-data-utils.js"></script>
+    <script src="./js/timestamp.js"></script>
+    <script src="./js/table.js"></script>
+    <script src="./js/chart.js"></script>
+    <script src="./js/map.js"></script>
+    <script src="./js/perimeters.js"></script>
+</body>
+
+</html>
