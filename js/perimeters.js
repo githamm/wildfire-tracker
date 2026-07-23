@@ -28,6 +28,30 @@
         return moment(dateStr, 'YYYY-MM-DD').format('MMM D, YYYY');
     }
 
+    // A day whose mapped perimeter didn't change from the prior archived
+    // day is stored server-side as {geometry: null, geometrySameAsDate:
+    // "<date>"} instead of a second literal copy of the same (often large)
+    // polygon -- expand those references back to a real geometry object
+    // once, up front, so every entry in currentHistory always has a
+    // literal `geometry` exactly like before this existed, and nothing
+    // downstream (renderDay, the slider, the info card) needs to know the
+    // difference. geometrySameAsDate always points directly at a day with
+    // literal geometry, never at another reference, so this is a single
+    // lookup per entry, not a chain walk.
+    function resolveGeometryReferences(history) {
+        var byDate = {};
+        history.forEach(function(entry) {
+            byDate[entry.date] = entry;
+        });
+        history.forEach(function(entry) {
+            if (entry.geometry == null && entry.geometrySameAsDate) {
+                var source = byDate[entry.geometrySameAsDate];
+                entry.geometry = source ? source.geometry : null;
+            }
+        });
+        return history;
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         var mapEl = document.getElementById('perimeter-map');
         if (!mapEl) return;
@@ -215,7 +239,7 @@
                 history.sort(function(a, b) {
                     return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
                 });
-                currentHistory = history;
+                currentHistory = resolveGeometryReferences(history);
 
                 if (!history.length) {
                     dateLabel.textContent = 'No history available yet';
