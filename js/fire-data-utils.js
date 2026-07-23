@@ -163,6 +163,18 @@
         return 'var(--marker-contained)';
     }
 
+    // Same three containment bands as colorForContainment, but returning
+    // the darker -header variants (see :root in styles.css) tuned for
+    // white text on a solid background -- used for the map popup's
+    // colored fire-name header band, not the small marker dot itself
+    // (the raw marker tones don't all hold enough contrast with white at
+    // full-surface size, particularly --marker-amber).
+    function colorForContainmentHeader(percentContained) {
+        if (percentContained == null || percentContained < 25) return 'var(--marker-fire-header)';
+        if (percentContained < 75) return 'var(--marker-amber-header)';
+        return 'var(--marker-contained-header)';
+    }
+
     // Acreage and percentage change in mapped-perimeter acreage between two
     // consecutive daily snapshots, e.g. "+320 acres (+12.4%)". Returns
     // 'Unavailable' rather than throwing/NaN when either side is missing or
@@ -319,12 +331,12 @@
     //   city, landownerCategory, county,
     //   discoveryDateFormatted, updatedLabel, updatedDateFormatted,
     //   lat, lng (optional -- omit to skip the Google Maps link),
-    //   statusColor (optional -- a small dot shown before the Containment
-    //   value; the map popup passes the same containment-status color the
-    //   marker itself uses (see colorForContainment in map.js), so the
+    //   headerColor (optional -- colors the fire-name header's background;
+    //   the map popup passes the same containment-status color the marker
+    //   itself is drawn with (see colorForContainmentHeader), so the
     //   popup visually confirms what the marker already showed before it
     //   was clicked. The Perimeters info card doesn't set this, so its
-    //   Containment row has no dot.)
+    //   header stays plain.)
     // }
     function buildFireInfoHtml(props) {
         var overrides = applyFireOverrides(props.incidentName, props.cause);
@@ -367,18 +379,26 @@
             mapsLinkHtml = '<p class="fire-info-maps-link"><a href="' + mapsLink + '" target="_blank">Open in Google maps</a></p>';
         }
 
-        var containmentDot = props.statusColor ?
-            '<span class="fire-info-status-dot" style="background:' + props.statusColor + '"></span>' : '';
+        // A colored band behind the name/updated line when headerColor is
+        // given (map popup only) -- a much more visible version of the
+        // small status dot this replaced, so it's dropped from the
+        // Containment row below as redundant once the header itself
+        // carries that signal.
+        var headerClass = 'fire-info-header' + (props.headerColor ? ' fire-info-header--colored' : '');
+        var headerStyle = props.headerColor ? ' style="background:' + props.headerColor + '"' : '';
 
         // .fire-info-grid uses CSS auto-fit/minmax, so this same markup
         // naturally renders as a single column in a narrow Leaflet popup
         // and multiple columns in the wider Perimeters info card -- no
         // separate layout logic needed per context.
-        return '<h3 class="fire-name">' + overrides.name + '<br><span class="update">' + updatedLabel + ' ' + updatedDate + '</span></h3>' +
+        return '<div class="' + headerClass + '"' + headerStyle + '>' +
+            '<h3 class="fire-name">' + overrides.name + '</h3>' +
+            '<p class="update">' + updatedLabel + ' ' + updatedDate + '</p>' +
+            '</div>' +
             '<div class="fire-info-grid">' +
             row('Acres', acreInfo.acres + ' (' + acreInfo.squareMiles + ' sq. mi.)') +
             growthRow +
-            row('Containment', containmentDot + percentContained) +
+            row('Containment', percentContained) +
             row('Cause', cause) +
             row('Discovered', discoveryDate) +
             daysBurningRow +
@@ -398,6 +418,7 @@
         formatPersonnel: formatPersonnel,
         sizeForAcres: sizeForAcres,
         colorForContainment: colorForContainment,
+        colorForContainmentHeader: colorForContainmentHeader,
         formatGrowthChange: formatGrowthChange,
         orUnavailable: orUnavailable,
         normalizeTableRow: normalizeTableRow,

@@ -125,9 +125,10 @@
             updatedDateFormatted: props.modifiedDate ? moment(props.modifiedDate).format('LLL') : null,
             lat: props.lat,
             lng: props.lng,
-            // Same color the marker itself is drawn with -- the popup
-            // should visually confirm what you already saw before clicking.
-            statusColor: FireDataUtils.colorForContainment(props.percentContained)
+            // Same containment band the marker itself is drawn with -- the
+            // popup's header should visually confirm what you already saw
+            // before clicking.
+            headerColor: FireDataUtils.colorForContainmentHeader(props.percentContained)
         });
     }
 
