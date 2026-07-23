@@ -20,17 +20,38 @@
         return (name || '').trim().toLowerCase();
     }
 
-    // Active = also present in map_data.json, not inferred from this
-    // table's own containment percentage/discovery date. Those weren't
-    // reliable on their own: a fire whose containment was never updated to
-    // exactly 100% once crews moved on, or whose discovery date is
-    // missing, could look "still active" indefinitely no matter how old it
-    // actually was -- which is exactly what turned up (very old fires at
-    // 0% containment, still flagged active). map_data.json only ever
-    // contains incidents NIFC is presently tracking -- a fire drops out of
-    // it entirely once it's fully contained or the record goes stale -- so
-    // whether a name appears there is a far more direct signal than
-    // anything this table can infer on its own.
+    // A pure containment/age heuristic used to be this table's only
+    // signal, and it wasn't reliable on its own: a fire whose containment
+    // was never updated to exactly 100% once crews moved on, or whose
+    // discovery date is missing, could look "still active" indefinitely no
+    // matter how old it actually was -- very old fires at 0% containment,
+    // still flagged active. That's what motivated cross-referencing
+    // map_data.json instead (see isRowActive below). But the two NIFC
+    // services don't always agree: map_data.json comes from
+    // WFIGS_Incident_Locations_Current, table_data.json from
+    // WFIGS_Incident_Locations_YearToDate, and a small, brand-new fire can
+    // land in the YearToDate archive before -- or without ever -- showing
+    // up in Current (Current seems to skew toward larger/higher-priority
+    // incidents). The "Round Bottom" fire is a real example: 21 acres,
+    // discovered within the last day, null containment, absent from
+    // map_data.json entirely. Bounded to a short recency window (not
+    // indefinite) so this can't reintroduce the original bug -- an old
+    // fire whose containment was simply never updated, looking active
+    // forever.
+    var RECENT_DISCOVERY_DAYS = 7;
+
+    function isRecentlyDiscoveredWithUnknownContainment(row) {
+        if (row.percent_contained != null || !row.fire_discovery_date_time) {
+            return false;
+        }
+        var daysSinceDiscovery = moment().diff(moment(row.fire_discovery_date_time), 'days');
+        return daysSinceDiscovery <= RECENT_DISCOVERY_DAYS;
+    }
+
+    // Active = present in map_data.json (still-tracked incidents -- the
+    // more direct signal, see above), OR recently discovered with unknown
+    // containment (catches a real fire the map cross-reference alone
+    // would miss, per the Round Bottom case above).
     // Matched on the raw IncidentName (not the display name after
     // FIRE_OVERRIDES) since both files come from the same underlying NIFC
     // data and should agree on the raw name even where a local override
@@ -43,7 +64,8 @@
     // identical name in the *same* state remains a small residual risk
     // this can't fully rule out.
     function isRowActive(row) {
-        return !!activeFireNames[normalizeNameForMatch(row.fire_name)];
+        return !!activeFireNames[normalizeNameForMatch(row.fire_name)] ||
+            isRecentlyDiscoveredWithUnknownContainment(row);
     }
 
     function compareRows(a, b) {
